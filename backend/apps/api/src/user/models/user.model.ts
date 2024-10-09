@@ -26,13 +26,13 @@ export class UserModel implements Users {
   lastName: string | null
 
   @ApiProperty()
-  telegramHash: string
+  telegramUsername: string | null
 
   @ApiProperty()
-  telegramUsername: string | null
+  wallet: string | null
 }
 
-export type UserCreate = Omit<UserModel, 'id' | 'createdAt' | 'updatedAt'>
+export type UserCreate = Omit<UserModel, 'id' | 'createdAt' | 'updatedAt' | 'wallet'>
 
 export type UserUpdate = Partial<
   Omit<UserModel, 'id' | 'createdAt' | 'updatedAt'> & { avatarUrl: string }

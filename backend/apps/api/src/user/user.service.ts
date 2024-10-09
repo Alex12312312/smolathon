@@ -2,9 +2,11 @@ import { Inject, Injectable } from '@nestjs/common'
 import { UserCreate, UserModel, UserUpdate } from './models/user.model'
 import { PrismaService } from '@app/db'
 import { UserNotFoundException } from '@app/domain/errors/users/user.not-found.exception'
+import { TelegramUserData } from '@telegram-auth/server'
 
 @Injectable()
 export class UserService {
+  static createOrUpdate: any
   constructor(
     private readonly prisma: PrismaService,
     @Inject('USER_ID') private readonly userId: () => string,
@@ -30,7 +32,27 @@ export class UserService {
     return this.prisma.users.findFirst({ where: { telegramId: tgId } })
   }
 
-  async createOrUpdate() {}
+  async createOrUpdate(params: { data: TelegramUserData }): Promise<UserModel | null> {
+    const { data } = params
+
+    return this.prisma.users.upsert({
+      where: {
+        telegramId: data.id,
+      },
+      update: {
+        telegramUsername: data.username,
+        firstName: data.first_name,
+        lastName: data.last_name,
+      },
+      create: {
+        id: this.userId(),
+        telegramId: data.id,
+        firstName: data.first_name,
+        lastName: data.last_name,
+        telegramUsername: data.username,
+      },
+    })
+  }
 
   async create(params: { data: UserCreate }): Promise<UserModel | null> {
     const { data } = params
@@ -52,6 +74,20 @@ export class UserService {
       where: { id },
       data: {
         ...data,
+      },
+    })
+  }
+
+  async updateWallet(params: {
+    telegramId: number
+    wallet: string | null
+  }): Promise<UserModel | null> {
+    const { telegramId, wallet } = params
+
+    return this.prisma.users.update({
+      where: { telegramId },
+      data: {
+        wallet: wallet,
       },
     })
   }
