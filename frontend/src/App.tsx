@@ -1,8 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from './components/ui/button'
 
 function App() {
     const [get, set] = useState(0)
+
+    useEffect(() => {
+        return () => {
+            
+        }
+    }, []);
 
     return (
         <>
