@@ -1,0 +1,52 @@
+name: be
+
+services:
+  database:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_DB: 'dev'
+    ports:
+      - '5464:5432'
+    volumes:
+      - database-pg:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  nginx:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+
+  api:
+    build:
+      context: '.'
+      dockerfile: './apps/api/Dockerfile'
+    ports:
+      - '3002:3002'
+    networks:
+      - backend
+
+  storage:
+    build:
+      context: '.'
+      dockerfile: './apps/storage/Dockerfile'
+    ports:
+      - '3333:3333'
+    networks:
+      - backend
+
+volumes:
+  database-pg:
+
+networks:
+  backend:
+    driver: bridge
