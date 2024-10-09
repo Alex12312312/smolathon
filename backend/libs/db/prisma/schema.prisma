@@ -25,6 +25,7 @@ model Users {
   firstName        String  @map("first_name")
   lastName         String? @map("last_name")
   telegramUsername String? @map("telegram_username")
+  wallet String?
 
   @@index([telegramId])
   @@map("users")

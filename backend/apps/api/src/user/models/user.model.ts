@@ -27,9 +27,12 @@ export class UserModel implements Users {
 
   @ApiProperty()
   telegramUsername: string | null
+
+  @ApiProperty()
+  wallet: string | null
 }
 
-export type UserCreate = Omit<UserModel, 'id' | 'createdAt' | 'updatedAt'>
+export type UserCreate = Omit<UserModel, 'id' | 'createdAt' | 'updatedAt' | 'wallet'>
 
 export type UserUpdate = Partial<
   Omit<UserModel, 'id' | 'createdAt' | 'updatedAt'> & { avatarUrl: string }
