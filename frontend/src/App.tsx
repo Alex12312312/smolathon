@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from './components/ui/button'
 import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
 import { Header } from './components/ui/Header/header'
@@ -7,6 +7,12 @@ import { WalletInfo } from './components/wallet/wallet'
 function App() {
 
     const [get, set] = useState(0)
+
+    useEffect(() => {
+        return () => {
+            
+        }
+    }, []);
 
     return (
         

@@ -13,7 +13,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       timestamp: new Date(),
     }
 
-    response.status(status).json({
+    response.status(200).json({
       success: false,
       error,
     })
