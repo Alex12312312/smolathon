@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ApiResponse } from '../api.types'
+import { useTonAddress } from '@tonconnect/ui-react';
 
 type FetchMethod = 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
@@ -10,7 +11,7 @@ const useFetch = <TResponse, TBody = undefined>(route: string, method: FetchMeth
 
     const url = new URL(import.meta.env.VITE_API_URL)
     url.pathname = route
-
+    const wallet = useTonAddress();
     const execute = async (body?: TBody) => {
         setLoading(true)
 
@@ -23,7 +24,9 @@ const useFetch = <TResponse, TBody = undefined>(route: string, method: FetchMeth
         try {
             const response = await fetch(url, {
                 method,
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json',
+                    ...(!!wallet  && {'X-TonWallet': wallet})
+                 },
                 ...(method !== 'DELETE' && { body: JSON.stringify(body) }),
             })
             const json = await response.json()
