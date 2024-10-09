@@ -24,9 +24,10 @@ const useFetch = <TResponse, TBody = undefined>(route: string, method: FetchMeth
         try {
             const response = await fetch(url, {
                 method,
-                headers: { 'Content-Type': 'application/json',
-                    ...(!!wallet  && {'X-TonWallet': wallet})
-                 },
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(!!wallet && { 'X-TonWallet': wallet })
+                },
                 ...(method !== 'DELETE' && { body: JSON.stringify(body) }),
             })
             const json = await response.json()
