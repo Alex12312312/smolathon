@@ -34,6 +34,4 @@ contract NftItem with Deployable, Ownable {
             individual_content: self.individual_content.asSlice().asCell()
         };
     }
-
-
 }

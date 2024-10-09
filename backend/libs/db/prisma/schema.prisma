@@ -30,3 +30,14 @@ model Users {
   @@index([telegramId])
   @@map("users")
 }
+
+model File {
+  id            String     @id
+  type          String     @db.VarChar(64)
+  original_name String     @db.VarChar(64)
+  region        String
+  bucket        String
+  url           String
+
+  @@map("files")
+}
