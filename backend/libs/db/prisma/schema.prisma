@@ -24,7 +24,6 @@ model Users {
   telegramId       BigInt  @unique @map("telegram_id")
   firstName        String  @map("first_name")
   lastName         String? @map("last_name")
-  telegramHash     String  @map("telegram_hash")
   telegramUsername String? @map("telegram_username")
 
   @@index([telegramId])

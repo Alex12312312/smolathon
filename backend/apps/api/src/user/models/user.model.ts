@@ -26,9 +26,6 @@ export class UserModel implements Users {
   lastName: string | null
 
   @ApiProperty()
-  telegramHash: string
-
-  @ApiProperty()
   telegramUsername: string | null
 }
 
