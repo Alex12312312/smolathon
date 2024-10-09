@@ -1,4 +1,4 @@
-import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger'
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
 import { UserService } from './user.service'
 import { UserModel } from './models/user.model'
 import { Serialize } from '@app/common'

@@ -4,6 +4,7 @@ import { UserController } from './user.controller'
 import { init } from '@paralleldrive/cuid2'
 import { PrismaModule } from '@app/db'
 import { TelegramContextInterceptor } from '../auth/interceptors/telegram-context.interceptor'
+import { TonWalletGuard } from '../auth/guards/ton-wallet.guard'
 
 @Module({
   exports: [UserService],
@@ -15,6 +16,7 @@ import { TelegramContextInterceptor } from '../auth/interceptors/telegram-contex
       useValue: init({ length: 16 }),
     },
     TelegramContextInterceptor,
+    TonWalletGuard,
   ],
   controllers: [UserController],
 })

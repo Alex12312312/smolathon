@@ -77,4 +77,18 @@ export class UserService {
       },
     })
   }
+
+  async updateWallet(params: {
+    telegramId: number
+    wallet: string | null
+  }): Promise<UserModel | null> {
+    const { telegramId, wallet } = params
+
+    return this.prisma.users.update({
+      where: { telegramId },
+      data: {
+        wallet: wallet,
+      },
+    })
+  }
 }
