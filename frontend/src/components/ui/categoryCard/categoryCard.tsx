@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils'
+import { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 type CategoryCardProps = {
@@ -6,6 +7,7 @@ type CategoryCardProps = {
     text?: string
     imageSrc?: string
     className?: string
+    children?: ReactNode
 }
 
 export const CategoryCard = (props: CategoryCardProps) => {
@@ -24,6 +26,7 @@ export const CategoryCard = (props: CategoryCardProps) => {
             <div className="absolute left-4 top-4 rounded-2xl text-base font-bold text-white">
                 {props.text}
             </div>
+            {props.children}
         </div>
     )
 }
