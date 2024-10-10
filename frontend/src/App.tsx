@@ -1,23 +1,11 @@
-import { useEffect, useState } from 'react'
-import { Button } from './components/ui/button'
 import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Greetings } from './pages/greetings/greetings'
 import { MainPage } from './pages/mainPage/mainPage'
 import Layout from './pages/layout/layout'
-import { Header } from './components/ui/Header/header'
-import { WalletInfo } from './components/wallet/wallet'
-import { Group } from './components/ui/group/group'
-import { CategoryCard } from './components/ui/categoryCard/categoryCard'
 import ProfileMe from './pages/profile-me/profile-me'
 
 function App() {
-    const [get, set] = useState(0)
-
-    useEffect(() => {
-        return () => {}
-    }, [])
-
     return (
         <TonConnectUIProvider
             manifestUrl="https://s3.timeweb.cloud/c682ec52-c9a44753-1274-459e-a8c2-4a6a310b5f93/public/manifest.json"
