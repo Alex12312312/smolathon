@@ -5,6 +5,37 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { GlobalExceptionFilter } from '@app/common/filters/error.filter'
 import { ResponseInterceptor } from '@app/common/interceptors/response.interceptor'
 
+const overrideJsonBigIntSerialization = (): void => {
+  const originalJSONStringify = JSON.stringify
+
+  JSON.stringify = function (value: any, replacer, space: number): string {
+    const bigIntReplacer = (_key: string, value: any): any => {
+      if (typeof value === 'bigint') {
+        return Number(value.toString())
+      }
+      return value
+    }
+
+    const customReplacer = (key: string, value: any): any => {
+      if (Array.isArray(replacer) && !replacer.includes(key) && key !== '') {
+        return undefined
+      }
+
+      const modifiedValue = bigIntReplacer(key, value)
+
+      if (typeof replacer === 'function') {
+        return replacer(key, modifiedValue)
+      }
+
+      return modifiedValue
+    }
+
+    return originalJSONStringify(value, replacer != null ? customReplacer : bigIntReplacer, space)
+  }
+}
+
+overrideJsonBigIntSerialization()
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
 
@@ -19,17 +50,14 @@ async function bootstrap() {
 
   // Swagger Configuration
   const config = new DocumentBuilder()
-    .setTitle('Ecothon')
-    .addBearerAuth(
+    .setTitle('Smolathon')
+    .addApiKey(
       {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-        name: 'JWT',
-        description: 'Enter JWT token',
+        type: 'apiKey',
+        name: 'Authorization',
         in: 'header',
       },
-      'jwt',
+      'telegram-query',
     )
     .build()
 

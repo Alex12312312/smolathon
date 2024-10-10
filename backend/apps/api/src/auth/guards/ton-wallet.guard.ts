@@ -7,7 +7,7 @@ export class TonWalletGuard implements CanActivate {
   constructor(private readonly userService: UserService) {}
 
   async canActivate(context: ExecutionContext) {
-    const request = await context.switchToHttp().getRequest<RequestWithTelegramContext>()
+    const request = context.switchToHttp().getRequest<RequestWithTelegramContext>()
 
     const tgUser = request.context
 
