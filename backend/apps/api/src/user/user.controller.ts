@@ -21,6 +21,8 @@ export class UserController {
   async getMe(@Req() req: RequestWithTelegramContext) {
     const telegramId = req.context.id
 
+    console.log(req.context)
+
     return this.userService.findByTgId({ tgId: telegramId })
   }
 
