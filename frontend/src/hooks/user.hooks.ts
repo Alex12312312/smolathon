@@ -1,6 +1,7 @@
 import useSWR from 'swr'
 import { User } from '@/lib/api/types/user.types'
 import { ApiResponse } from '@/lib/api.types'
+import { fetcher } from '@/lib/fetcher'
 
 export const useGetMe = (token: string) => {
     const { data, error, isLoading } = useSWR<ApiResponse<User>>(
@@ -10,5 +11,5 @@ export const useGetMe = (token: string) => {
         fetcher,
     )
 
-    return { user: data?.result ?? undefined, error, isLoading }
+    return { user: data ?? undefined, error, isLoading }
 }
