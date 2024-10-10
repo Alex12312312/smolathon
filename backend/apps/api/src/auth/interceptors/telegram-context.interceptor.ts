@@ -12,14 +12,14 @@ export class TelegramContextInterceptor implements NestInterceptor {
 
     console.log(res)
 
-    // const tonWalletHeader = request.header('X-TonWallet')
+    const tonWalletHeader = request.header('X-TonWallet')
 
-    // if (tonWalletHeader && tonWalletHeader !== 'null') {
-    //   this.userService.updateWallet({
-    //     telegramId: request.context.id,
-    //     wallet: tonWalletHeader,
-    //   })
-    // }
+    if (tonWalletHeader && tonWalletHeader !== 'null') {
+      this.userService.updateWallet({
+        telegramId: request.context.id,
+        wallet: tonWalletHeader,
+      })
+    }
 
     return next.handle()
   }
