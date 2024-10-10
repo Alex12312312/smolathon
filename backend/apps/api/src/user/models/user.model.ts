@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { Users } from '@prisma/client'
-import { Transform } from 'class-transformer'
 
 export class UserModel implements Users {
   @ApiProperty()
@@ -15,7 +14,6 @@ export class UserModel implements Users {
   @ApiProperty()
   avatarUrl: string
 
-  @Transform((val) => Number(val))
   @ApiProperty()
   telegramId: bigint
 

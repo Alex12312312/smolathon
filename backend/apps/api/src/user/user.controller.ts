@@ -1,4 +1,4 @@
-import { ApiBearerAuth, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger'
+import { ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger'
 import { UserService } from './user.service'
 import { UserModel } from './models/user.model'
 import { Serialize } from '@app/common'
@@ -17,20 +17,21 @@ export class UserController {
   @Serialize(UserModel)
   @UseGuards(TelegramAuthGuard)
   @UseInterceptors(TelegramContextInterceptor)
-  @Get(':id')
-  async findById(@Param('id') id: string) {
-    await this.userService.assertUserExistsById(id)
+  @Get('me')
+  async getMe(@Req() req: RequestWithTelegramContext) {
+    const telegramId = req.context.id
 
-    return this.userService.findById({ id })
+    return this.userService.findByTgId({ tgId: telegramId })
   }
 
   @ApiOkResponse({ type: UserModel })
   @Serialize(UserModel)
   @UseGuards(TelegramAuthGuard)
   @UseInterceptors(TelegramContextInterceptor)
-  @Get('me')
-  async getMe(@Req() req: RequestWithTelegramContext) {
-    const telegramId = req.context.id
-    await this.userService.findByTgId({ tgId: telegramId })
+  @Get(':id')
+  async findById(@Param('id') id: string) {
+    await this.userService.assertUserExistsById(id)
+
+    return this.userService.findById({ id })
   }
 }

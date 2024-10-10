@@ -34,7 +34,6 @@ export class UserService {
 
   async createOrUpdate(params: { data: TelegramUserData }): Promise<UserModel | null> {
     const { data } = params
-
     return this.prisma.users.upsert({
       where: {
         telegramId: data.id,
@@ -50,6 +49,7 @@ export class UserService {
         firstName: data.first_name,
         lastName: data.last_name,
         telegramUsername: data.username,
+        wallet: null,
       },
     })
   }
