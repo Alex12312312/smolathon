@@ -1,5 +1,5 @@
 export const MainPage = () => {
-    return <div>
+    return <div className=" min-h-full">
         Тут может быть ваша реклама
     </div>
 }

@@ -21,7 +21,6 @@ const useFetch = <TResponse, TBody = undefined>(route: string, method: FetchMeth
             setLoading(false)
             return
         }
-при 
         try {
             const response = await fetch(url, {
                 method,
