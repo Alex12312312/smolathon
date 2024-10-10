@@ -19,7 +19,6 @@ export class AssetCreateDto {
   creatorId: string
 
   @ApiProperty()
-  @IsString()
   @IsOptional()
   consumerId: bigint
 }
