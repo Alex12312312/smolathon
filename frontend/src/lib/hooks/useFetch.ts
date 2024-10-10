@@ -4,7 +4,11 @@ import { useTonAddress } from '@tonconnect/ui-react'
 
 type FetchMethod = 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
-const useFetch = <TResponse, TBody = undefined>(route: string, method: FetchMethod) => {
+const useFetch = <TResponse, TBody = undefined>(
+    route: string,
+    method: FetchMethod,
+    token?: string,
+) => {
     const [data, setData] = useState<ApiResponse<TResponse> | null>(null)
     const [error, setError] = useState<Error | null>(null)
     const [loading, setLoading] = useState(false)
@@ -25,6 +29,7 @@ const useFetch = <TResponse, TBody = undefined>(route: string, method: FetchMeth
             const response = await fetch(url, {
                 method,
                 headers: {
+                    ...(!!token && { Authorization: token }),
                     'Content-Type': 'application/json',
                     ...(!!wallet && { 'X-TonWallet': wallet }),
                 },

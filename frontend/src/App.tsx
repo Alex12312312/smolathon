@@ -1,8 +1,9 @@
 import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Greetings } from './pages/greetings'
-import { MainPage } from './pages/mainPage'
+import { Greetings } from './pages/greetings/'
+import { MainPage } from './pages/mainPage/'
 import Layout from './pages/layout'
+import ProfileMe from './pages/profile-me'
 
 function App() {
     return (
@@ -109,6 +110,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Greetings></Greetings>} />
                         <Route path="/main" element={<MainPage></MainPage>} />
+                        <Route path="/me" element={<ProfileMe></ProfileMe>} />
                     </Routes>
                 </Layout>
             </BrowserRouter>
