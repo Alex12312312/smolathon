@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Greetings } from './pages/greetings/greetings'
