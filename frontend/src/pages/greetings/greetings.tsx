@@ -1,4 +1,5 @@
 //import { useState } from "react"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import smolensk from "../../assets/smolensk.png"
 //import smolensk2 from "../../assets/smolensk2.png"
 import { useNavigate } from "react-router-dom"
