@@ -6,8 +6,6 @@ import { WalletInfo } from './components/wallet/wallet'
 import { Greetings } from './pages/greetings/greetings'
 import { MainPage } from './pages/mainPage/mainPage'
 import Layout from './pages/layout/layout'
-import { Header } from './components/ui/Header/header'
-import { WalletInfo } from './components/wallet/wallet'
 import { Group } from './components/ui/group/group'
 import { CategoryCard } from './components/ui/categoryCard/categoryCard'
 
