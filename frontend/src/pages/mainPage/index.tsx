@@ -12,21 +12,31 @@ export const MainPage = () => {
             <Group name="Категории" className="m-4">
                 <div className="flex w-full flex-1 flex-grow flex-wrap items-stretch gap-2 self-stretch">
                     <CategoryCard
+                        link="/feed"
                         className="w-[200px] flex-grow bg-[#925AFF]"
                         text="Герои и события"
                     >
                         <img src={category1} className="absolute bottom-0 right-0 h-[110px]" />
                     </CategoryCard>
-                    <CategoryCard className="flex-grow bg-[#009951]" text="Мероприятия">
+                    <CategoryCard
+                        className="flex-grow bg-[#009951]"
+                        text="Мероприятия"
+                        link="/feed"
+                    >
                         <img src={category2} className="absolute bottom-0 right-0 h-[110px]" />
                     </CategoryCard>
                     <CategoryCard
+                        link="/feed"
                         className="w-[150px] flex-grow bg-[#007AFF]"
                         text="Исторические объекты"
                     >
                         <img src={category3} className="absolute bottom-0 right-0 h-[110px]" />
                     </CategoryCard>
-                    <CategoryCard className="flex-grow bg-[#FDA43A]" text="Цифровое искусство">
+                    <CategoryCard
+                        className="flex-grow bg-[#FDA43A]"
+                        text="Цифровое искусство"
+                        link="/feed"
+                    >
                         <img src={category4} className="absolute bottom-0 right-0 h-[110px]" />
                     </CategoryCard>
                 </div>
