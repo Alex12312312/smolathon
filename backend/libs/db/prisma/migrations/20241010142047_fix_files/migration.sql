@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "files" ALTER COLUMN "type" SET DATA TYPE TEXT,
+ALTER COLUMN "original_name" SET DATA TYPE TEXT;

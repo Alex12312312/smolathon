@@ -1,19 +1,28 @@
-import { useState } from "react"
+//import { useState } from "react"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import smolensk from "../../assets/smolensk.png"
+//import smolensk2 from "../../assets/smolensk2.png"
+import { useNavigate } from "react-router-dom"
 
-const GreetingsTexts = {
-    'first': 'Собирай и коллекционируй',
-    'second': 'Покупай и продавай',
-    'third': 'У меня украли дизайнера',
-}
 
-const GreetingsImage = {
-    'first': 'https://extraguide.ru/images/t/ad245ef0739dde025f3df44ab4f098218ddcdbb9.jpg',
-    'second': 'https://media.kupo.la/thumbor/unsafe/preset/orig/images/2020/9/28/1601286526-6025672.jpg',
-    'third': 'https://i.pinimg.com/736x/1f/84/15/1f84150a1bc0057df83347cfc05c272f.jpg',
-}
 export const Greetings = () => {
-    const [selected, selectPage] = useState('first');
-    return <div className="w-lvw h-lvh bg-gradient-to-br from-green-600 to-green-950">
-
+    const navigator = useNavigate();
+    return <div className="w-lvw h-lvh flex">
+        <img className="w-full h-full object-cover" src={smolensk} alt="Изображение не загружено"></img>
+        <button className="absolute top-0 bg-transparent right-0 p-3 size-auto text-white text-4xl " onClick={() => { navigator("/main") }}>⮾</button>
+        <div className="absolute flex flex-col bg-[#302B2BCF] text-white bottom-0 h-1/3 w-full rounded-lg pt-16 gap-[60px] justify-center content-center">
+            <div className="w-4/5 text-center self-center text-2xl">Открой новые горизонты, почувствуй  свой город !</div>
+            <RadioGroup className="flex flex-row gap-[44px] self-center" defaultValue="page-one">
+                <div className="flex items-center space-x-2">
+                    <RadioGroupItem className="h-4 w-4 border-white after:bg-white before:bg-white" value="page-one" id="page-one" />
+                </div>
+                <div className="flex items-center space-x-2 ">
+                    <RadioGroupItem className="h-4 w-4 border-white after:bg-white" value="page-two" id="page-two" />
+                </div>
+                <div className="flex items-center space-x-2 ">
+                    <RadioGroupItem className="h-4 w-4 border-white after:bg-white" value="page-three" id="page-three" />
+                </div>
+            </RadioGroup>
+        </div>
     </div>
 }

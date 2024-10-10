@@ -37,8 +37,8 @@ model Users {
 
 model File {
   id            String     @id
-  type          String     @db.VarChar(64)
-  original_name String     @db.VarChar(64)
+  type          String     
+  original_name String     
   region        String
   bucket        String
   url           String

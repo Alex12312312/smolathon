@@ -1,14 +1,32 @@
-import { useNavigate } from "react-router-dom"
-interface CategoryCardI {
-    link?: string,
-    text?: string,
-    ImageLink: string,
+import { cn } from '@/lib/utils'
+import { ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+type CategoryCardProps = {
+    link?: string
+    text?: string
+    imageSrc?: string
+    className?: string
+    children?: ReactNode
 }
 
-export const CategotyCard = (props: CategoryCardI) => {
-    let navigator = useNavigate();
-    return <div className="w-2/5 h-40 rounded-md" onClick={() => { props.link && navigator(props.link!) }}>
-        <img className="bg-cover w-full h-full" src={props.ImageLink}></img>
-        <div className="relative text-base">{props.text}</div>
-    </div>
+export const CategoryCard = (props: CategoryCardProps) => {
+    let navigator = useNavigate()
+    return (
+        <div
+            className={cn('relative h-40 w-2/5 overflow-clip rounded-md', props.className)}
+            rounded-2xl
+            onClick={() => {
+                props.link && navigator(props.link!)
+            }}
+        >
+            {props.imageSrc ? (
+                <img className="h-full w-full object-cover" src={props.imageSrc}></img>
+            ) : undefined}
+            <div className="absolute left-4 top-4 rounded-2xl text-base font-bold text-white">
+                {props.text}
+            </div>
+            {props.children}
+        </div>
+    )
 }

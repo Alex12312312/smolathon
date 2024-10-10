@@ -11,7 +11,7 @@ describe('NftCollection', () => {
     beforeEach(async () => {
         blockchain = await Blockchain.create();
 
-        nftCollection = blockchain.openContract(await NftCollection.fromInit());
+        nftCollection = blockchain.openContract(await NftCollection.fromInit(12312313n));
 
         deployer = await blockchain.treasury('deployer');
 
