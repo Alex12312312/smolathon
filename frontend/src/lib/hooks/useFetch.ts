@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { ApiResponse } from '../api.types'
-import { useTonAddress } from '@tonconnect/ui-react';
+import { useTonAddress } from '@tonconnect/ui-react'
 
-type FetchMethod = 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+type FetchMethod = 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
 const useFetch = <TResponse, TBody = undefined>(route: string, method: FetchMethod) => {
     const [data, setData] = useState<ApiResponse<TResponse> | null>(null)
@@ -11,22 +11,23 @@ const useFetch = <TResponse, TBody = undefined>(route: string, method: FetchMeth
 
     const url = new URL(import.meta.env.VITE_API_URL)
     url.pathname = route
-    const wallet = useTonAddress();
+    const wallet = useTonAddress()
+
     const execute = async (body?: TBody) => {
         setLoading(true)
 
         if (body === undefined && method !== 'DELETE') {
-            setError(new Error('Request body is required for this method.'));
-            setLoading(false);
-            return;
+            setError(new Error('Request body is required for this method.'))
+            setLoading(false)
+            return
         }
-
+при 
         try {
             const response = await fetch(url, {
                 method,
                 headers: {
                     'Content-Type': 'application/json',
-                    ...(!!wallet && { 'X-TonWallet': wallet })
+                    ...(!!wallet && { 'X-TonWallet': wallet }),
                 },
                 ...(method !== 'DELETE' && { body: JSON.stringify(body) }),
             })
@@ -38,7 +39,7 @@ const useFetch = <TResponse, TBody = undefined>(route: string, method: FetchMeth
         setLoading(false)
     }
 
-    return { execute, data, error, loading }
+    return { execute, data, error, isLoading: loading }
 }
 
 export default useFetch
