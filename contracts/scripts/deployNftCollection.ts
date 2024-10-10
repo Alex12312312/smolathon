@@ -13,10 +13,10 @@ export async function run(provider: NetworkProvider) {
         {
             $$type: 'Deploy',
             queryId: 0n,
-        }
+        },
     );
 
     await provider.waitForDeploy(nftCollection.address);
 
-    console.log('ID', await nftCollection.getId());
+    console.log(nftCollection.address);
 }
