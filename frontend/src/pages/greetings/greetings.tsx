@@ -1,6 +1,6 @@
-import { useState } from "react"
+//import { useState } from "react"
 import smolensk from "../../assets/smolensk.png"
-import smolensk2 from "../../assets/smolensk2.png"
+//import smolensk2 from "../../assets/smolensk2.png"
 import { useNavigate } from "react-router-dom"
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group"
 
