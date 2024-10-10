@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post, Put, Req, UseGuards, UseInterceptors } from '@nestjs/common'
+import { Body, Controller, Param, Post, Req, UseGuards, UseInterceptors } from '@nestjs/common'
 import { ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger'
 import { AssetService } from './asset.service'
 import { AssetModel } from './models/asset.model'

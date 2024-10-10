@@ -21,5 +21,5 @@ export class AssetCreateDto {
   @ApiProperty()
   @IsString()
   @IsOptional()
-  consumerId: string
+  consumerId: bigint
 }
