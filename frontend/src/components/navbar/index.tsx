@@ -1,28 +1,50 @@
 import home from '../../assets/home-icon.svg'
-import cart from '../../assets/cart-icon.svg'
+import CartIcon from '../../assets/cart-icon.svg'
 import collections from '../../assets/collections-icon.svg'
 import profile from '../../assets/profile-icon.svg'
+import { Link, useLocation } from 'react-router-dom'
+
+const isActive = (path: string) => location.pathname === path
+
+function NavbarIcon({ route, src, text }: { route: string; src: string; text: string }) {
+    return (
+        <Link to={route} className="flex select-none flex-col items-center justify-evenly">
+            <img
+                src={src}
+                className={`h-[26px] select-none ${isActive(route) ? 'fill-[#009951]' : ''}`}
+                alt={text}
+                style={
+                    isActive(route)
+                        ? {
+                              filter: 'invert(34%) sepia(84%) saturate(2536%) hue-rotate(135deg) brightness(91%) contrast(101%)',
+                          }
+                        : undefined
+                }
+            />
+            <h1
+                className={`select-none text-[10px] font-medium ${isActive('/main') ? 'text-[#009951]' : 'text-gray-500'}`}
+            >
+                {text}
+            </h1>
+        </Link>
+    )
+}
 
 function Navbar() {
+    const location = useLocation()
+
+    // Функция для проверки активного пути
+    const isActive = (path: string) => location.pathname === path
+
     return (
-        <div className="flex flex-row justify-evenly mx-2 p-2 border-t border-gray-200">
-            <div className="flex flex-col justify-evenly items-center">
-                <img src={home} className='h-[26px]'/>
-                <h1 className="text-[10px] font-medium text-[#009951]">Главная</h1>
+        <nav>
+            <div className="mx-2 flex flex-row justify-evenly border-t border-gray-200 p-2">
+                <NavbarIcon route="/main" src={home} text="Главная" />
+                <NavbarIcon route="/collections" src={collections} text="Коллекции" />
+                <NavbarIcon route="/me" src={profile} text="Профиль" />
+                <NavbarIcon route="/cart" src={CartIcon} text="Корзина" />
             </div>
-            <div className="flex flex-col justify-evenly items-center">
-                <img src={cart} className='h-[26px]'/>
-                <h1 className="text-[10px] font-medium">Корзина</h1>
-            </div>
-            <div className="flex flex-col justify-evenly items-center">
-                <img src={collections} className='h-[26px]'/>
-                <h1 className="text-[10px] font-medium">Коллекция</h1>
-            </div>
-            <div className="flex flex-col justify-evenly items-center">
-                <img src={profile} className='h-[26px]'/>
-                <h1 className="text-[10px] font-medium">Профиль</h1>
-            </div>
-        </div>
+        </nav>
     )
 }
 
