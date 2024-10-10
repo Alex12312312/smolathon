@@ -23,7 +23,7 @@ export const CategoryCard = (props: CategoryCardProps) => {
             {props.imageSrc ? (
                 <img className="h-full w-full object-cover" src={props.imageSrc}></img>
             ) : undefined}
-            <div className="absolute left-4 top-4 rounded-2xl text-base font-bold text-white">
+            <div className="absolute left-4 top-4 max-w-[100px] select-none rounded-2xl text-[18px] font-bold text-white">
                 {props.text}
             </div>
             {props.children}

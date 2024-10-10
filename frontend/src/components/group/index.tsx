@@ -1,4 +1,4 @@
-import { cn } from '../../../lib/utils'
+import { cn } from '../../lib/utils'
 import { ReactNode } from 'react'
 
 type GroupProps = {
@@ -10,7 +10,7 @@ type GroupProps = {
 export const Group = (props: GroupProps) => {
     return (
         <div className={cn(props.className, 'flex flex-col gap-5')}>
-            <p className="text-lg font-bold">{props.name}</p>
+            <p className="text-3xl font-bold">{props.name}</p>
             {props.children}
         </div>
     )

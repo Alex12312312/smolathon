@@ -1,8 +1,8 @@
 import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Greetings } from './pages/greetings/greetings'
-import { MainPage } from './pages/mainPage/mainPage'
-import Layout from './pages/layout/layout'
+import { Greetings } from './pages/greetings'
+import { MainPage } from './pages/mainPage'
+import Layout from './pages/layout'
 
 function App() {
     return (

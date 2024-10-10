@@ -1,4 +1,4 @@
-import Navbar from '../../components/navbar/navbar'
+import Navbar from '../../components/navbar'
 import { ReactNode } from 'react'
 import { useLocation } from 'react-router-dom'
 
