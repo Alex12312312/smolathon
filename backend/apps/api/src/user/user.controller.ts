@@ -1,4 +1,4 @@
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger'
 import { UserService } from './user.service'
 import { UserModel } from './models/user.model'
 import { Serialize } from '@app/common'
@@ -8,6 +8,7 @@ import { TelegramAuthGuard } from '@app/common/auth/telegram/auth-telegram.guard
 import { RequestWithTelegramContext } from '@app/common/controller/controller.model'
 
 @ApiTags('Users')
+@ApiSecurity('telegram-query')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
