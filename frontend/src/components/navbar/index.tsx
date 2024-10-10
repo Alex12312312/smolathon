@@ -4,9 +4,10 @@ import collections from '../../assets/collections-icon.svg'
 import profile from '../../assets/profile-icon.svg'
 import { Link, useLocation } from 'react-router-dom'
 
-const isActive = (path: string) => location.pathname === path
-
 function NavbarIcon({ route, src, text }: { route: string; src: string; text: string }) {
+    const location = useLocation()
+    const isActive = (path: string) => location.pathname === path
+
     return (
         <Link to={route} className="flex select-none flex-col items-center justify-evenly">
             <img
@@ -16,8 +17,8 @@ function NavbarIcon({ route, src, text }: { route: string; src: string; text: st
                 style={
                     isActive(route)
                         ? {
-                              filter: 'invert(34%) sepia(84%) saturate(2536%) hue-rotate(135deg) brightness(91%) contrast(101%)',
-                          }
+                            filter: 'invert(34%) sepia(84%) saturate(2536%) hue-rotate(135deg) brightness(91%) contrast(101%)',
+                        }
                         : undefined
                 }
             />
@@ -31,11 +32,6 @@ function NavbarIcon({ route, src, text }: { route: string; src: string; text: st
 }
 
 function Navbar() {
-    const location = useLocation()
-
-    // Функция для проверки активного пути
-    const isActive = (path: string) => location.pathname === path
-
     return (
         <nav>
             <div className="mx-2 flex flex-row justify-evenly border-t border-gray-200 p-2">
