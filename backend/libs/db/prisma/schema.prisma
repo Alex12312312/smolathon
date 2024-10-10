@@ -27,6 +27,10 @@ model Users {
   telegramUsername String? @map("telegram_username")
   wallet String?
 
+  assets Asset[] @relation("user_assets")
+  assetsOwn Asset[] @relation("user_assets_own")
+  comments Comment[]
+
   @@index([telegramId])
   @@map("users")
 }
@@ -40,4 +44,42 @@ model File {
   url           String
 
   @@map("files")
+}
+
+model Asset{
+  id String @id
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  
+  image String
+  description String
+  title String
+
+  creator Users @relation("user_assets", fields: [creatorId], references: [id])
+  creatorId String @map("creator_id")
+
+  consumer Users? @relation("user_assets_own", fields: [consumerId], references: [id])
+  consumerId String? @map("consumer_id")
+
+  comments Comment[]
+
+  @@map("asset")
+}
+
+model Comment{
+  id String @id
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  content String
+
+  creator Users @relation(fields: [creatorId], references: [id])
+  creatorId String @map("creator_id")
+
+  asset Asset @relation(fields: [assetId], references: [id])
+  assetId String @map("asset_id")
+
+  @@map("comment")
 }
