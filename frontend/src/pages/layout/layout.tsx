@@ -8,7 +8,7 @@ type LayoutProps = {
 
 function Layout({ children }: LayoutProps) {
     const location = useLocation()
-    if (location.pathname === '/greetings') {
+    if (location.pathname === '/') {
         return <main>{children}</main>
     }
 
