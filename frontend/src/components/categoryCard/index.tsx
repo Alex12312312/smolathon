@@ -11,10 +11,14 @@ type CategoryCardProps = {
 }
 
 export const CategoryCard = (props: CategoryCardProps) => {
-    let navigator = useNavigate()
+    const navigator = useNavigate()
+
     return (
         <div
-            className={cn('relative h-40 w-2/5 overflow-clip rounded-md', props.className)}
+            className={cn(
+                'relative h-40 w-2/5 cursor-pointer overflow-clip rounded-md',
+                props.className,
+            )}
             rounded-2xl
             onClick={() => {
                 props.link && navigator(props.link!)

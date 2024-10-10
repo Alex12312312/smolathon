@@ -1,6 +1,6 @@
 import { useTelegram } from '@/lib/telegram/telegramProvider.tsx'
-import { useGetMe } from '../../hooks/user.hooks.getme.ts'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { useGetMe } from '@/hooks/user.hooks'
 
 function ProfileMe() {
     const telegram = useTelegram()
