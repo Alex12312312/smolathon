@@ -18,6 +18,7 @@ import { TelegramAuthGuard } from '@app/common/auth/telegram/auth-telegram.guard
 import { AssetCreateDto } from './dto/asset-create.dto'
 import { TelegramContextInterceptor } from '../auth/interceptors/telegram-context.interceptor'
 import { RequestWithTelegramContext } from '@app/common/controller/controller.model'
+import { ReqWithTelegramContextAndUser } from '../auth/auth.types'
 
 @ApiTags('Asset')
 @ApiSecurity('telegram-query')
@@ -47,8 +48,8 @@ export class AssetController {
   @UseGuards(TelegramAuthGuard)
   @UseInterceptors(TelegramContextInterceptor)
   @Post()
-  async createAsset(@Body() dto: AssetCreateDto) {
-    return await this.assetService.create({ data: dto })
+  async createAsset(@Body() dto: AssetCreateDto, @Req() req: ReqWithTelegramContextAndUser) {
+    return await this.assetService.create({ data: { ...dto, creatorId: req.user.id } })
   }
 
   @ApiOkResponse({ type: AssetModel })

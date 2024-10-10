@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsOptional, IsString } from 'class-validator'
+import { IsString } from 'class-validator'
 
 export class AssetCreateDto {
   @ApiProperty()
@@ -17,8 +17,4 @@ export class AssetCreateDto {
   @ApiProperty()
   @IsString()
   creatorId: string
-
-  @ApiProperty()
-  @IsOptional()
-  consumerId: bigint
 }
