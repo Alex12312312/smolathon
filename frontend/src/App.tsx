@@ -1,19 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Button } from './components/ui/button'
 import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
-<<<<<<< HEAD
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Header } from './components/ui/Header/header'
-import { WalletInfo } from './components/wallet/wallet'
 import { Greetings } from './pages/greetings/greetings'
 import { MainPage } from './pages/mainPage/mainPage'
 import Layout from './pages/layout/layout'
-=======
 import { Header } from './components/ui/Header/header'
 import { WalletInfo } from './components/wallet/wallet'
 import { Group } from './components/ui/group/group'
 import { CategoryCard } from './components/ui/categoryCard/categoryCard'
->>>>>>> main
+import ProfileMe from './pages/profile-me/profile-me'
 
 function App() {
     const [get, set] = useState(0)
@@ -22,7 +18,6 @@ function App() {
         return () => {}
     }, [])
 
-<<<<<<< HEAD
     return (
         <TonConnectUIProvider
             manifestUrl="https://s3.timeweb.cloud/c682ec52-c9a44753-1274-459e-a8c2-4a6a310b5f93/public/manifest.json"
@@ -125,9 +120,9 @@ function App() {
             <BrowserRouter>
                 <Layout>
                     <Routes>
-                        
-          <Route path="/" element={<Greetings></Greetings>} />
-          <Route path="/main" element={<MainPage></MainPage>} />
+                        <Route path="/" element={<Greetings></Greetings>} />
+                        <Route path="/main" element={<MainPage></MainPage>} />
+                        <Route path="/me" element={<ProfileMe></ProfileMe>} />
                     </Routes>
                 </Layout>
             </BrowserRouter>
