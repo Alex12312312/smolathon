@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 
 
 export const Greetings = () => {
+
     const [selected, changeImage] = useState(0);
     const radioGroupRef = useRef(null);
     const textes = ["Открой новые горизонты, почувствуй  свой город !", "Сохрани культурное наследие!", "Начни свой путь с нами!"];
