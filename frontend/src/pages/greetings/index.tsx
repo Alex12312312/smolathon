@@ -6,7 +6,6 @@ import smolensk3 from "../../assets/smolensk3.png"
 import { useNavigate } from "react-router-dom"
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TonConnectButton } from "@tonconnect/ui-react";
 
 
 export const Greetings = () => {
