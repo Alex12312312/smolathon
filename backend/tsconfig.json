@@ -35,6 +35,12 @@
       ],
       "@app/domain/*": [
         "libs/domain/src/*"
+      ],
+      "@app/rate-limiter": [
+        "libs/rate-limiter/src"
+      ],
+      "@app/rate-limiter/*": [
+        "libs/rate-limiter/src/*"
       ]
     }
   }

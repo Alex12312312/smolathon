@@ -106,7 +106,8 @@
     "moduleNameMapper": {
       "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1",
       "^@app/db(|/.*)$": "<rootDir>/libs/db/src/$1",
-      "^@app/domain(|/.*)$": "<rootDir>/libs/domain/src/$1"
+      "^@app/domain(|/.*)$": "<rootDir>/libs/domain/src/$1",
+      "^@app/rate-limiter(|/.*)$": "<rootDir>/libs/rate-limiter/src/$1"
     }
   }
 }
