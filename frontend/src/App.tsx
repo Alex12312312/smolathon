@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Button } from './components/ui/button'
 import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
-import { Header } from './components/ui/Header/header'
-import { WalletInfo } from './components/wallet/wallet'
-import { Group } from './components/ui/group/group'
-import { CategoryCard } from './components/ui/categoryCard/categoryCard'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Greetings } from './pages/greetings/greetings'
+import { MainPage } from './pages/mainPage/mainPage'
 
 function App() {
     const [get, set] = useState(0)
@@ -109,7 +107,7 @@ function App() {
         ],
       }}
       actionsConfiguration={{
-        twaReturnUrl: 'https://t.me/DemoDappWithTonConnectBot/demo',
+        twaReturnUrl: 'https://t.me/DemoDappWithTonConnectBot/demo', // TODO: FIX
       }}
     >
       <BrowserRouter>
