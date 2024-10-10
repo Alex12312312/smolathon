@@ -9,7 +9,7 @@ type GroupProps = {
 
 export const Group = (props: GroupProps) => {
     return (
-        <div className={cn(props.className, 'm-4 flex flex-col gap-5')}>
+        <div className={cn(props.className, 'flex flex-col gap-5')}>
             <p className="text-lg font-bold">{props.name}</p>
             {props.children}
         </div>
