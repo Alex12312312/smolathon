@@ -13,7 +13,7 @@ contract NftCollection with Deployable, Ownable {
 
     init() {
         self.owner = sender();
-        self.collection_content = "Alefman NFT Collection";    
+        self.collection_content = "Smolensk NFT Collection";    
     }
 
     receive("Mint"){

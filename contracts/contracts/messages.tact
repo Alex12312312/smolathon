@@ -1,20 +1,26 @@
-message Transfer{
+message Transfer {
     query_id: Int as uint64;
     new_owner: Address;
 }
-
-struct CollectionData{
+struct CollectionData {
     next_item_index: Int;
     collection_content: Cell;
     owner_address: Address;
 }
-
-struct ItemData{
+struct ItemData {
     owner: Address;
     collection_address: Address;
     item_index: Int;
     individual_content: Cell;
 }
+
+// struct NftItemMetadata {
+//     uri: String;
+//     name: String;
+//     description: String;
+//     image: String;
+//     image_data: Cell;
+// }
 
 // struct CollectionMetaData {
 //    image: String;

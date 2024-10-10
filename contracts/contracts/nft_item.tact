@@ -3,7 +3,6 @@ import "@stdlib/ownable";
 import "./messages.tact";
 
 contract NftItem with Deployable, Ownable {
-
     owner: Address;
     collection_address: Address;
     item_index: Int;
