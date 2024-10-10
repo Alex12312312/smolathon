@@ -1,5 +1,5 @@
 import { TonConnectButton } from "@tonconnect/ui-react"
-import { Button } from "../button"
+import { Button } from "../ui/button"
 
 export const Header = () => {
     return <div className="w-dvw flex justify-end">

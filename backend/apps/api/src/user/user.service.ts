@@ -3,12 +3,14 @@ import { UserCreate, UserModel, UserUpdate } from './models/user.model'
 import { PrismaService } from '@app/db'
 import { UserNotFoundException } from '@app/domain/errors/users/user.not-found.exception'
 import { TelegramUserData } from '@telegram-auth/server'
+import { AvatarService } from '../avatar/avatar.service'
 
 @Injectable()
 export class UserService {
   static createOrUpdate: any
   constructor(
     private readonly prisma: PrismaService,
+    private readonly avatar: AvatarService,
     @Inject('USER_ID') private readonly userId: () => string,
   ) {}
 
@@ -49,7 +51,7 @@ export class UserService {
         firstName: data.first_name,
         lastName: data.last_name,
         telegramUsername: data.username,
-        avatarUrl: 
+        avatarUrl: await this.avatar.getAvatarByTelegramId({ telegramId: data.id }),
         wallet: null,
       },
     })

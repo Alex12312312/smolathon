@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 import { AuthDataValidator, urlStrToAuthDataMap } from '@telegram-auth/server'
 
 @Injectable()
 export class TelegramAuthService {
   private readonly _validator: AuthDataValidator
 
-  constructor() {
+  constructor(private readonly configService: ConfigService) {
     this._validator = new AuthDataValidator({
-      botToken: process.env.BOT_TOKEN,
+      botToken: this.configService.getOrThrow<string>('TELEGRAM_BOT_TOKEN'),
     })
   }
 

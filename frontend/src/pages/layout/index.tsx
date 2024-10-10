@@ -1,4 +1,4 @@
-import Navbar from '../../components/navbar/navbar'
+import Navbar from '../../components/navbar'
 import { ReactNode } from 'react'
 import { useLocation } from 'react-router-dom'
 
@@ -8,13 +8,13 @@ type LayoutProps = {
 
 function Layout({ children }: LayoutProps) {
     const location = useLocation()
-    if (location.pathname === '/greeting') {
+    if (location.pathname === '/') {
         return <main>{children}</main>
     }
 
     return (
-        <div className="flex flex-col justify-between min-h-full">
-            <main>{children}</main>
+        <div className="flex flex-col justify-between h-dvh">
+            <main className='h-[95%]'>{children}</main>
             <Navbar />
         </div>
     )
