@@ -5,6 +5,7 @@ import category1 from '@/assets/category1.svg'
 import category2 from '@/assets/category2.svg'
 import category3 from '@/assets/category3.svg'
 import category4 from '@/assets/category4.svg'
+import { useTelegram } from '@/lib/telegram/telegramProvider'
 
 export const MainPage = () => {
     return (
@@ -31,7 +32,7 @@ export const MainPage = () => {
                     </CategoryCard>
                 </div>
             </Group>
-            <Button className="m-4 border border-green-500 bg-white text-green-500">
+            <Button className="m-4 border border-green-500 bg-transparent text-green-500">
                 Перейти к заданиям
             </Button>
         </div>
