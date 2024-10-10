@@ -5,10 +5,12 @@ import { init } from '@paralleldrive/cuid2'
 import { PrismaModule } from '@app/db'
 import { TelegramContextInterceptor } from '../auth/interceptors/telegram-context.interceptor'
 import { TonWalletGuard } from '../auth/guards/ton-wallet.guard'
+import { AvatarService } from '../avatar/avatar.service'
+import { AvatarModule } from '../avatar/avatar.module'
 
 @Module({
   exports: [UserService],
-  imports: [PrismaModule],
+  imports: [PrismaModule, AvatarModule],
   providers: [
     UserService,
     {
@@ -17,6 +19,7 @@ import { TonWalletGuard } from '../auth/guards/ton-wallet.guard'
     },
     TelegramContextInterceptor,
     TonWalletGuard,
+    AvatarService,
   ],
   controllers: [UserController],
 })

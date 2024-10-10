@@ -24,7 +24,7 @@ export class AssetModel implements Asset {
   creatorId: string
 
   @ApiProperty()
-  consumerId: string | null
+  consumerId: bigint | null
 }
 
 export type AssetCreate = Omit<AssetModel, 'id' | 'createdAt' | 'updatedAt'>
