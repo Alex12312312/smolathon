@@ -6,3 +6,6 @@ const useGetUserById = ({ id }: { id: string }) => {
 
     return { user: data, error, isLoading }
 }
+
+
+useGetUserById({ id: 'asd' })
