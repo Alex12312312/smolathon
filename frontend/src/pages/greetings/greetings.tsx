@@ -14,12 +14,12 @@ export const Greetings = () => {
             <div className="w-4/5 text-center self-center text-2xl">Открой новые горизонты, почувствуй  свой город !</div>
             <RadioGroup className="flex flex-row gap-[44px] self-center" defaultValue="page-one">
                 <div className="flex items-center space-x-2">
-                    <RadioGroupItem className="h-4 w-4" value="page-one" id="page-one" />
+                    <RadioGroupItem className="h-4 w-4 border-white after:bg-white" value="page-one" id="page-one" />
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 border-white after:bg-white">
                     <RadioGroupItem className="h-4 w-4" value="page-two" id="page-two" />
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 border-white after:bg-white">
                     <RadioGroupItem className="h-4 w-4" value="page-three" id="page-three" />
                 </div>
             </RadioGroup>
