@@ -1,8 +1,19 @@
-import { Body, Controller, Param, Post, Req, UseGuards, UseInterceptors } from '@nestjs/common'
-import { ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger'
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Query,
+  Req,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common'
+import { ApiOkResponse, ApiQuery, ApiSecurity, ApiTags } from '@nestjs/swagger'
 import { AssetService } from './asset.service'
 import { AssetModel } from './models/asset.model'
-import { Serialize } from '@app/common'
+import { ApiOkArrayResponse, mapToArrayResponse, Serialize } from '@app/common'
 import { TelegramAuthGuard } from '@app/common/auth/telegram/auth-telegram.guard'
 import { AssetCreateDto } from './dto/asset-create.dto'
 import { TelegramContextInterceptor } from '../auth/interceptors/telegram-context.interceptor'
@@ -13,6 +24,23 @@ import { RequestWithTelegramContext } from '@app/common/controller/controller.mo
 @Controller('asset')
 export class AssetController {
   constructor(private readonly assetService: AssetService) {}
+
+  @ApiOkArrayResponse(AssetModel)
+  @ApiQuery({
+    name: 'limit',
+    required: false,
+  })
+  @ApiQuery({
+    name: 'offset',
+    required: false,
+  })
+  @Get()
+  async findAll(
+    @Query('limit', new ParseIntPipe({ optional: true })) limit?: null,
+    @Query('offset', new ParseIntPipe({ optional: true })) offset?: null,
+  ) {
+    return mapToArrayResponse(await this.assetService.findAll({ limit, offset }), offset)
+  }
 
   @ApiOkResponse({ type: AssetModel })
   @Serialize(AssetModel)

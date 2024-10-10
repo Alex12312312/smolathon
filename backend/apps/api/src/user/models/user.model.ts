@@ -28,6 +28,9 @@ export class UserModel implements Users {
 
   @ApiProperty()
   wallet: string | null
+
+  @ApiProperty()
+  balance: number
 }
 
 export type UserCreate = Omit<UserModel, 'id' | 'createdAt' | 'updatedAt' | 'wallet'>
