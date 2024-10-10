@@ -28,7 +28,7 @@ export const Greetings = () => {
         <img className="w-full h-full object-cover" src={smolensk} alt="Изображение не загружено"></img>
         <button className="absolute top-0 bg-transparent right-0 p-3 size-auto text-white text-4xl " onClick={() => { navigator("/main") }}>⮾</button>
         <div className="absolute flex flex-col bg-[#302B2BCF] bottom-0 h-1/3 w-full rounded-lg pt-16 gap-[60px]">
-            <div className="w-64 text-center">{GreetingsTexts.(RadioGroup.)}</div>
+            <div className="w-64 text-center">Test Text</div>
             <RadioGroup className="flex flex-row" defaultValue="page-one">
                 <div className="flex items-center space-x-2">
                     <RadioGroupItem className="h-4 w-4" value="page-one" id="page-one" />
