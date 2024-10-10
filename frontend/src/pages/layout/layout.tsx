@@ -8,13 +8,13 @@ type LayoutProps = {
 
 function Layout({ children }: LayoutProps) {
     const location = useLocation()
-    if (location.pathname === '/greeting') {
+    if (location.pathname === '/greetings') {
         return <main>{children}</main>
     }
 
     return (
-        <div className="flex flex-col justify-between min-h-full">
-            <main>{children}</main>
+        <div className="flex flex-col justify-between h-dvh">
+            <main className='h-[95%]'>{children}</main>
             <Navbar />
         </div>
     )
