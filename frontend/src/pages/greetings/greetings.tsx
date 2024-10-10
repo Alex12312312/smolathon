@@ -16,11 +16,11 @@ export const Greetings = () => {
                 <div className="flex items-center space-x-2">
                     <RadioGroupItem className="h-4 w-4 border-white after:bg-white" value="page-one" id="page-one" />
                 </div>
-                <div className="flex items-center space-x-2 border-white after:bg-white">
-                    <RadioGroupItem className="h-4 w-4" value="page-two" id="page-two" />
+                <div className="flex items-center space-x-2 ">
+                    <RadioGroupItem className="h-4 w-4 border-white after:bg-white" value="page-two" id="page-two" />
                 </div>
-                <div className="flex items-center space-x-2 border-white after:bg-white">
-                    <RadioGroupItem className="h-4 w-4" value="page-three" id="page-three" />
+                <div className="flex items-center space-x-2 ">
+                    <RadioGroupItem className="h-4 w-4 border-white after:bg-white" value="page-three" id="page-three" />
                 </div>
             </RadioGroup>
         </div>
