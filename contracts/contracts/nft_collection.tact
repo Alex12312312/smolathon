@@ -4,14 +4,14 @@ import "./nft_item.tact";
 import "./messages.tact";
 
 contract NftCollection with Deployable, Ownable {
-    const minTonForStorage: Int = ton("0.03");
+    const minTonForStorage: Int = ton("0.0001");
     const gasConsumption: Int = ton("0.03");
-    
+
     owner: Address;
     next_item_index: Int as uint32 = 0;
     collection_content: String;
     seed: Int as uint32;
-
+    
     init(seed: Int){
         self.seed = seed;
         self.owner = sender();

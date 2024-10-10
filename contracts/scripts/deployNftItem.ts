@@ -1,7 +1,6 @@
 import { toNano } from 'ton-core';
 import { NftItem } from '../wrappers/NftItem';
 import { NetworkProvider } from '@ton/blueprint';
-import { Address } from '@ton/core';
 
 export async function run(provider: NetworkProvider) {
     const nftItem = provider.open(await NftItem.fromInit());
