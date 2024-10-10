@@ -113,10 +113,12 @@ function App() {
         twaReturnUrl: 'https://t.me/DemoDappWithTonConnectBot/demo',
       }}
     >
-      <Header />
-      <div className="text-red w-20 p-4 text-[32px]">Hello, penis!</div>
-      <Button onClick={() => set(get + 1)}>Penis! {get}</Button>
-      <WalletInfo></WalletInfo>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Greetings></Greetings>} />
+          <Route path="/main" element={<MainPage></MainPage>} />
+        </Routes>
+      </BrowserRouter>
     </TonConnectUIProvider>
   )
 }
