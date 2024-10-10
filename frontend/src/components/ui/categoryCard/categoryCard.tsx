@@ -1,14 +1,22 @@
-import { useNavigate } from "react-router-dom"
-interface CategoryCardI {
-    link?: string,
-    text?: string,
-    ImageLink: string,
+import { useNavigate } from 'react-router-dom'
+
+type CategoryCardProps = {
+    link?: string
+    text?: string
+    imageSrc: string
 }
 
-export const CategotyCard = (props: CategoryCardI) => {
-    let navigator = useNavigate();
-    return <div className="w-2/5 h-1/5 rounded-md" onClick={() => { props.link && navigator(props.link!) }}>
-        <img className="bg-cover w-full h-full" src={props.ImageLink}></img>
-        <div className="relative text-base">{props.text}</div>
-    </div>
+export const CategoryCard = (props: CategoryCardProps) => {
+    let navigator = useNavigate()
+    return (
+        <div
+            className="h-1/5 w-2/5 rounded-md"
+            onClick={() => {
+                props.link && navigator(props.link!)
+            }}
+        >
+            <img className="h-full w-full bg-cover" src={props.imageSrc}></img>
+            <div className="relative text-base">{props.text}</div>
+        </div>
+    )
 }
