@@ -9,7 +9,7 @@ import heart from '../../assets/heart.svg'
 import { useState } from 'react'
 import { useGetCommentsByAssetId } from '@/hooks/comments.hooks'
 import useFetch from '@/lib/hooks/useFetch'
-import { Asset } from '@/lib/api/types/assets.types'
+import { Asset as AssetType } from '@/lib/api/types/assets.types'
 
 export const Asset = () => {
     const { id } = useParams()
@@ -26,7 +26,7 @@ export const Asset = () => {
             </div>
         )
     }
-    const { execute} = useFetch<Asset>(`/user/${id}`, "POST")
+    const { execute} = useFetch<AssetType>(`/user/${id}`, "POST")
 
     return (
         <div className="flex h-[93vh] w-full select-none overflow-x-hidden overflow-y-scroll">
