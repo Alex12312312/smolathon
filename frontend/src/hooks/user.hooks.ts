@@ -10,6 +10,8 @@ export const useUserGetById = (id: string) => {
         fetcher,
     )
 
+    console.log(data)
+
     return { user: data?.result, error, isLoading }
 }
 

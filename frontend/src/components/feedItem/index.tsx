@@ -1,14 +1,22 @@
+import { useNavigate } from 'react-router-dom'
+
 type FeedItemProps = {
+    id: string
     title: string
     description: string
     imageSrc: string
 }
 
 export const FeedItem = (props: FeedItemProps) => {
-    console.log(props.imageSrc)
+    const navigate = useNavigate()
     return (
         <>
-            <div className="flex w-full flex-grow flex-col overflow-clip rounded-xl bg-item sm:w-[250px]">
+            <div
+                className="flex w-full flex-grow flex-col overflow-clip rounded-xl bg-item sm:w-[250px]"
+                onClick={() => {
+                    navigate(`/asset/${props.id}`)
+                }}
+            >
                 <div className="h-40">
                     <img className="h-full w-full object-cover" src={props.imageSrc}></img>
                 </div>

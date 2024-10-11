@@ -46,6 +46,7 @@ export const Feed = () => {
                         {data?.map((feedItems) => {
                             return feedItems.map((feedItem) => (
                                 <FeedItem
+                                    id={feedItem.id}
                                     key={feedItem.id}
                                     title={feedItem.title}
                                     imageSrc={feedItem.image}

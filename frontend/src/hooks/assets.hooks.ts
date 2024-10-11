@@ -1,7 +1,10 @@
+import { ApiResponse } from '@/lib/api.types'
 import { Asset } from '@/lib/api/types/assets.types'
+import useSWR from 'swr'
 import useSWRInfinite from 'swr/infinite'
+import { fetcher } from '@/lib/fetcher'
 
-const fetcher = (url: string) =>
+const longFetcher = (url: string) =>
     fetch(url)
         .then((res) => res.json())
         .then((res) => res.result.data)
@@ -14,7 +17,7 @@ const getKey = (offset: number, previousPageData: Asset[]) => {
 
 export const useCategoryFeed = () => {
     //@ts-ignore
-    const { data, size, setSize } = useSWRInfinite<Asset[]>(getKey, fetcher)
+    const { data, size, setSize } = useSWRInfinite<Asset[]>(getKey, longFetcher)
 
     if (!data) return { data, size, setSize }
 
@@ -24,4 +27,16 @@ export const useCategoryFeed = () => {
     }
 
     return { data, size, setSize }
+}
+
+export const useGetAssetById = (id: string) => {
+    const { data, error, isLoading } = useSWR<ApiResponse<Asset>>(
+        [`${import.meta.env.VITE_API_URL}/asset/${id}`],
+        // @ts-ignore
+        fetcher,
+    )
+
+    console.log({ data, id })
+
+    return { asset: data?.result, error, isLoading }
 }
