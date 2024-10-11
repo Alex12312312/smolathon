@@ -5,6 +5,8 @@ import { ConfigService } from '@nestjs/config'
 
 @Update()
 export class TelegramBotUpdate {
+  private readonly REFERRAL_BONUS = 100
+
   constructor(
     private readonly prisma: PrismaService,
     private readonly config: ConfigService,
@@ -41,27 +43,48 @@ export class TelegramBotUpdate {
         : undefined
 
     if (payload) {
-      const inviterId = payload
+      const senderId = payload
+      const receiverId = ctx.userModel.id
 
-      const inviter = await this.prisma.users.findFirst({ where: { id: inviterId } })
+      const inviter = await this.prisma.users.findFirst({ where: { id: senderId } })
 
       if (!inviter) {
         await this.replyWelcome(ctx)
         return
       }
 
-      const invite = await this.prisma.invite.findFirst({ where: { receiverId: ctx.userModel.id } })
+      const invite = await this.prisma.invite.findFirst({ where: { receiverId } })
 
       if (!!invite) {
         await this.replyWelcome(ctx)
         return
       }
 
-      await this.prisma.invite.create({
-        data: {
-          senderId: inviterId,
-          receiverId: ctx.userModel.id,
-        },
+      await this.prisma.$transaction(async (tx) => {
+        await tx.invite.create({
+          data: {
+            senderId,
+            receiverId,
+          },
+        })
+
+        await tx.users.update({
+          where: { id: senderId },
+          data: {
+            balance: {
+              increment: this.REFERRAL_BONUS,
+            },
+          },
+        })
+
+        await tx.users.update({
+          where: { id: receiverId },
+          data: {
+            balance: {
+              increment: this.REFERRAL_BONUS,
+            },
+          },
+        })
       })
     }
 
