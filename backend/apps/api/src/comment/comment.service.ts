@@ -49,24 +49,10 @@ export class CommentService {
     })
   }
 
-  async getAllByAssetId(params: {
-    limit?: number
-    offset?: number
-    assetId: string
-  }): Promise<CommentModel[]> {
-    const { limit, offset, assetId } = params
+  async getAllByAssetId(params: { assetId: string }): Promise<CommentModel[]> {
+    const { assetId } = params
 
     return this.prisma.comment.findMany({
-      take: limit ?? 10,
-      skip: offset ?? 0,
-      select: {
-        id: true,
-        createdAt: true,
-        updatedAt: true,
-        content: true,
-        creatorId: true,
-        assetId: true,
-      },
       where: { assetId: assetId },
     })
   }
