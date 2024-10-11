@@ -8,11 +8,18 @@ import { useGetUserReferrals, useUserGetMe } from '@/hooks/user.hooks'
 
 function ProfileMe() {
     const telegram = useTelegram()
-    const { user, error: userError, isLoading: userIsLoading } = useUserGetMe(telegram.webApp?.initData ?? '')
-    const { referrals, error: referralsError, isLoading: referralsIsLoading } = useGetUserReferrals(telegram.webApp?.initData ?? '')
+    const {
+        user,
+        error: userError,
+        isLoading: userIsLoading,
+    } = useUserGetMe(telegram.webApp?.initData ?? '')
+    const {
+        referrals,
+        error: referralsError,
+        isLoading: referralsIsLoading,
+    } = useGetUserReferrals(telegram.webApp?.initData ?? '')
 
-
-    if (isLoading) {
+    if (userIsLoading) {
         return (
             <div className="flex h-[90vh] items-center justify-center">
                 <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
