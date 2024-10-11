@@ -56,7 +56,7 @@ export const Feed = () => {
     return (
         <>
             <Group
-                className="mt-3 flex h-[90vh] select-none overflow-x-hidden overflow-y-scroll overscroll-none p-3"
+                className="mt-3 flex h-[87vh] select-none overflow-x-hidden overflow-y-scroll overscroll-none p-3"
                 name={title()}
             >
                 <div className="flex flex-grow flex-wrap justify-center gap-3">
