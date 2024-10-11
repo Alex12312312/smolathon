@@ -119,7 +119,7 @@ function App() {
                             <Route path="/main" element={<MainPage></MainPage>} />
                             <Route path="/me" element={<ProfileMe></ProfileMe>} />
                             <Route path="/collections" element={<Collection />} />
-                            <Route path="/poster" element={<Poster></Poster>}/>
+                            <Route path="/poster" element={<Poster></Poster>} />
                             <Route path="/feed" element={<Feed></Feed>} />
                             <Route path="/sendFile" element={<SendFile />} />
                             <Route path="/asset/:id" element={<Asset />} />

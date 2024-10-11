@@ -34,7 +34,7 @@ function NavbarIcon({ route, src, text }: { route: string; src: string; text: st
 function Navbar() {
     return (
         <nav>
-            <div className="mx-2 flex w-full flex-row justify-evenly bg-background p-2">
+            <div className=" mx-2 flex w-full flex-row justify-evenly bg-background border-t border-gray-200 p-2">
                 <NavbarIcon route="/main" src={home} text="Главная" />
                 <NavbarIcon route="/collections" src={collections} text="Коллекции" />
                 <NavbarIcon route="/me" src={profile} text="Профиль" />

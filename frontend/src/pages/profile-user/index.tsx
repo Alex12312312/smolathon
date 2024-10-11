@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button.tsx'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useUserGetById } from '@/hooks/user.hooks'
+import { Accordion, AccordionItem } from '@/components/ui/accordion'
 import { TelegramAvatar } from '@/components/telegramAvatar'
-//import { useTelegram } from '@/lib/telegram/telegramProvider'
 
 function ProfileUser() {
     //const telegram = useTelegram()
@@ -49,6 +49,18 @@ function ProfileUser() {
                         {user?.firstName}
                     </div>
                 </div>
+                <Accordion
+                    type="single"
+                    collapsible={false}
+                    className="divide-y divide-gray-200 overflow-y-scroll"
+                >
+                    <AccordionItem value="item-1" className="py-2">
+                        Работы пользователя
+                    </AccordionItem>
+                    <AccordionItem value="item-2" className="py-2">
+                        Коллекции пользователя
+                    </AccordionItem>
+                </Accordion>
                 <Button className="my-4 bg-[#14AE5C] text-base font-bold text-white hover:scale-[1.01] active:scale-[0.99]">
                     Поделиться аккаунтом
                 </Button>

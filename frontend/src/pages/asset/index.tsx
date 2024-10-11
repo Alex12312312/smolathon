@@ -8,6 +8,8 @@ import { useUserGetById } from '@/hooks/user.hooks'
 import heart from '../../assets/heart.svg'
 import { useState } from 'react'
 import { useGetCommentsByAssetId } from '@/hooks/comments.hooks'
+import useFetch from '@/lib/hooks/useFetch'
+import { Asset as AssetType } from '@/lib/api/types/assets.types'
 
 export const Asset = () => {
     const { id } = useParams()
@@ -24,12 +26,8 @@ export const Asset = () => {
             </div>
         )
     }
+    const { execute} = useFetch<AssetType>(`/user/${id}`, "POST")
 
-   /* const buyItem = () => { 
-        let requ =  useFetch(`/user/${id}`, "POST")}
-        requ.execute()
-    }
-        */
     return (
         <div className="flex h-[93vh] w-full select-none overflow-x-hidden overflow-y-scroll">
             <div className="w-full flex-col justify-between overflow-y-scroll">
@@ -41,7 +39,11 @@ export const Asset = () => {
                     </div>
 
                     <div className="flex flex-row gap-4">
-                        <Button className="w-full" >Купить ({asset?.price ?? 0} SMOIIaTON)</Button>
+                        <Button onClick={
+                            async () => {
+                                console.log(await execute())
+                            }
+                        } className="w-full" >Купить ({asset?.price ?? 0} SMOIIaTON)</Button>
                         <Button
                             variant={liked ? 'outline' : 'default'}
                             onClick={() => {
