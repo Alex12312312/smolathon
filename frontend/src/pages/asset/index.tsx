@@ -7,7 +7,7 @@ import { useGetAssetById } from '@/hooks/assets.hooks'
 import { useUserGetById } from '@/hooks/user.hooks'
 import heart from '../../assets/heart.svg'
 import { useState } from 'react'
-//import useFetch from '@/lib/hooks/useFetch'
+import { useGetCommentsByAssetId } from '@/hooks/comments.hooks'
 
 export const Asset = () => {
     const { id } = useParams()
@@ -15,8 +15,9 @@ export const Asset = () => {
 
     const { asset, isLoading: assetIsLoading } = useGetAssetById(id ?? '')
     const { user, isLoading: authorIsLoading } = useUserGetById(asset?.creatorId ?? '')
+    const { comments, isLoading: commentIsLoading } = useGetCommentsByAssetId(asset?.id ?? '')
 
-    if (assetIsLoading || authorIsLoading) {
+    if (assetIsLoading || authorIsLoading || commentIsLoading) {
         return (
             <div className="flex h-[90vh] items-center justify-center">
                 <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
@@ -75,10 +76,20 @@ export const Asset = () => {
                     </Group>
 
                     <Group name="Комментарии">
-                        <Comment text="Здорово 🔥" avatar={null}></Comment>
-                        <Comment text="Здорово 🔥" avatar={null}></Comment>
-                        <Comment text="Здорово 🔥" avatar={null}></Comment>
-                        <Comment text="Здорово 🔥" avatar={null}></Comment>
+                        {comments?.map((comment) => (
+                            <Comment
+                                text={comment.content}
+                                author={[
+                                    comment.creator?.firstName,
+                                    comment.creator?.lastName,
+                                ].join(' ')}
+                                avatar={comment.creator.avatarUrl}
+                            ></Comment>
+                        ))}
+                        <Comment text="Здорово 🔥" avatar={null} author="Пользователь"></Comment>
+                        <Comment text="Здорово 🔥" avatar={null} author="Пользователь"></Comment>
+                        <Comment text="Здорово 🔥" avatar={null} author="Пользователь"></Comment>
+                        <Comment text="Здорово 🔥" avatar={null} author="Пользователь"></Comment>
                     </Group>
                 </div>
             </div>
