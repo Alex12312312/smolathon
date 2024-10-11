@@ -39,11 +39,26 @@ export const Feed = () => {
         }
     }, [handleObserver])
 
+    const title = () => {
+        switch (category) {
+            case 'Activity':
+                return 'Мероприятия'
+            case 'DigitalArt':
+                return 'Цифровое искусство'
+            case 'HeroesAndEvents':
+                return 'Герои и события'
+            case 'HistoricalSites':
+                return 'Исторические объекты'
+            default:
+                return 'Каталог'
+        }
+    }
+
     return (
         <>
             <Group
-                className="flex h-[93vh] select-none overflow-x-hidden overflow-y-scroll overscroll-none p-3"
-                name="Каталог"
+                className="mt-3 flex h-[90vh] select-none overflow-x-hidden overflow-y-scroll overscroll-none p-3"
+                name={title()}
             >
                 <div className="flex flex-grow flex-wrap justify-center gap-3">
                     <div className="flex flex-wrap gap-4">
