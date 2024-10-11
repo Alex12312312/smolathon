@@ -34,7 +34,7 @@ export const Asset = () => {
                     </div>
 
                     <div className="flex flex-row gap-4">
-                        <Button className="w-full">Купить</Button>
+                        <Button className="w-full">Купить ({asset?.price ?? 0} SMOIIaTON)</Button>
                         <Button
                             variant={liked ? 'outline' : 'default'}
                             onClick={() => {
@@ -69,7 +69,10 @@ export const Asset = () => {
                     </Group>
 
                     <Group name="Комментарии">
-                        <Comment text="Это просто охуенно" avatar={null}></Comment>
+                        <Comment text="Здорово 🔥" avatar={null}></Comment>
+                        <Comment text="Здорово 🔥" avatar={null}></Comment>
+                        <Comment text="Здорово 🔥" avatar={null}></Comment>
+                        <Comment text="Здорово 🔥" avatar={null}></Comment>
                     </Group>
                 </div>
             </div>
