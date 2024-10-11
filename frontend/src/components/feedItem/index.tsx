@@ -22,7 +22,7 @@ export const FeedItem = (props: FeedItemProps) => {
                 </div>
                 <div className="flex flex-col gap-2 p-5">
                     <h2 className="text-xl font-bold">{props.title}</h2>
-                    <p className="w-[300px] overflow-hidden text-ellipsis whitespace-nowrap text-sm text-gray-400">
+                    <p className="w-[300px] overflow-hidden text-ellipsis whitespace-nowrap text-sm text-[#707070]">
                         {props.description}
                     </p>
                 </div>

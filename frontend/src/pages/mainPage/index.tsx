@@ -14,7 +14,7 @@ export const MainPage = () => {
             <div className="w-dvw overflow-hidden px-2 pt-7">
                 <div className="no-scrollbar flex w-full flex-auto gap-[15px] overflow-y-hidden overflow-x-scroll text-2xl">
                     <div
-                        className={`w-fit select-none ${currentPage === 'Каталог' ? 'font-bold text-black dark:text-white' : 'text-gray-500'}`}
+                        className={`w-fit select-none ${currentPage === 'Каталог' ? 'font-bold text-black dark:text-white' : 'text-[#707070]'}`}
                         onClick={() => {
                             changePage('Каталог')
                         }}
@@ -22,7 +22,7 @@ export const MainPage = () => {
                         Каталог
                     </div>
                     <div
-                        className={`w-fit select-none ${currentPage === 'Задания' ? 'font-bold text-black dark:text-white' : 'text-gray-500'}`}
+                        className={`w-fit select-none ${currentPage === 'Задания' ? 'font-bold text-black dark:text-white' : 'text-[#707070]'}`}
                         onClick={() => {
                             changePage('Задания')
                         }}
@@ -30,7 +30,7 @@ export const MainPage = () => {
                         Задания
                     </div>
                     <div
-                        className={`flex w-fit select-none flex-nowrap ${currentPage === 'Мои работы' ? 'font-bold text-black dark:text-white' : 'text-gray-500'}`}
+                        className={`flex w-fit select-none flex-nowrap ${currentPage === 'Мои работы' ? 'font-bold text-black dark:text-white' : 'text-[#707070]'}`}
                         onClick={() => {
                             changePage('Мои работы')
                         }}
