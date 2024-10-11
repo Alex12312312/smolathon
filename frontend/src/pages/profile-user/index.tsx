@@ -1,30 +1,30 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button.tsx'
-import { useNavigate, useParams } from 'react-router-dom';
-import { useGetUserById } from '@/hooks/user.hooks';
+import { useNavigate, useParams } from 'react-router-dom'
+import { useUserGetById } from '@/hooks/user.hooks'
 
 function ProfileUser() {
-    const navigate = useNavigate();
-    
-    const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate()
+
+    const { id } = useParams<{ id: string }>()
 
     if (!id) {
-        navigate('/');
-        return null; 
+        navigate('/')
+        return null
     }
 
-    const { user, error, isLoading } = useGetUserById(id);
+    const { user, error, isLoading } = useUserGetById(id)
 
     if (isLoading) {
         return (
-            <div className="flex items-center justify-center h-[90vh]">
-                <div className="animate-spin h-10 w-10 border-4 border-t-transparent border-blue-500 rounded-full"></div>
+            <div className="flex h-[90vh] items-center justify-center">
+                <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
             </div>
-        );
+        )
     }
 
     if (error) {
-        return <div>Error occurred: {error.message}</div>;
+        return <div>Error occurred: {error.message}</div>
     }
 
     return (
@@ -59,7 +59,7 @@ function ProfileUser() {
                 </Button>
             </div>
         </div>
-    );
+    )
 }
 
-export default ProfileUser;
+export default ProfileUser
