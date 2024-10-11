@@ -11,12 +11,12 @@ export const MainPage = () => {
         <div className="flex h-full w-full flex-col justify-between">
             <div className='w-dvw overflow-hidden px-2 pt-7'>
             <div className="w-full flex flex-auto text-2xl overflow-x-scroll overflow-y-hidden gap-[15px] no-scrollbar">
-            <div className={`w-fit select-none ${currentPage === "Каталог"? "font-bold": ''}`} onClick={() => {changePage("Каталог")}}>Каталог</div>
-            <div className={`w-fit select-none ${currentPage === "Задания"? "font-bold": ''}`} onClick={() => {changePage("Задания")}}>Задания</div>
-            <div className={`w-fit flex flex-nowrap select-none ${currentPage === "Мои работы"? "font-bold" : ''}`} onClick={() => {changePage("Мои работы")}}>Мои работы</div>
+            <div className={`w-fit select-none ${currentPage === "Каталог"? "font-bold dark:text-white text-black": 'text-gray-500'}`} onClick={() => {changePage("Каталог")}}>Каталог</div>
+            <div className={`w-fit select-none ${currentPage === "Задания"? "font-bold dark:text-white text-black": 'text-gray-500'}`} onClick={() => {changePage("Задания")}}>Задания</div>
+            <div className={`w-fit flex flex-nowrap select-none ${currentPage === "Мои работы"? "font-bold dark:text-white text-black" : 'text-gray-500'}`} onClick={() => {changePage("Мои работы")}}>Мои работы</div>
             </div>
             {currentPage === "Каталог"?
-            <div className="mt-3 flex-col gap-5">
+            <div className="mx-1 mt-3 flex-col gap-5">
                 <div className="flex w-full flex-1 flex-grow flex-wrap items-stretch gap-2 self-stretch">
                     <CategoryCard
                         link="/feed"
