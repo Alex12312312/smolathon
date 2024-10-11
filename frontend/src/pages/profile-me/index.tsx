@@ -1,14 +1,15 @@
 import { useTelegram } from '@/lib/telegram/telegramProvider.tsx'
-import { Avatar, AvatarFallback /*, AvatarImage */} from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button.tsx'
 import { TonConnectButton } from '@tonconnect/ui-react'
 import Friend from '@/components/friend/friend.tsx'
 import coin from '@/assets/coin.svg'
-//import { useGetMe } from '@/hooks/assets.hooks.getme'
+import { useGetUserReferrals, useUserGetMe } from '@/hooks/user.hooks'
 
 function ProfileMe() {
     const telegram = useTelegram()
-    const { user, error, isLoading } = useGetMe(telegram.webApp?.initData ?? '')
+    const { user, error: userError, isLoading: userIsLoading } = useUserGetMe(telegram.webApp?.initData ?? '')
+    const { referrals, error: referralsError, isLoading: referralsIsLoading } = useGetUserReferrals(telegram.webApp?.initData ?? '')
 
 
     if (isLoading) {
@@ -19,8 +20,8 @@ function ProfileMe() {
         )
     }
 
-    if (error) {
-        return <div>Error occurred: {error.message}</div>
+    if (userError) {
+        return <div>Error occurred: {userError.message}</div>
     }
 
     return (
