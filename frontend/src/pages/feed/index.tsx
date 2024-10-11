@@ -2,9 +2,13 @@ import { FeedItem } from '@/components/feedItem'
 import { Group } from '@/components/group'
 import { useCategoryFeed } from '@/hooks/assets.hooks'
 import { useRef, useCallback, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 export const Feed = () => {
-    const { data, setSize } = useCategoryFeed()
+    const [searchParams, _] = useSearchParams()
+    const category = searchParams.get('category') || undefined
+
+    const { data, setSize } = useCategoryFeed(category)
     const loader = useRef<HTMLDivElement | null>(null)
 
     const handleObserver = useCallback(

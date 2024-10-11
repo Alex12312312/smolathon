@@ -21,6 +21,8 @@ import { TelegramContextInterceptor } from '../auth/interceptors/telegram-contex
 import { Category } from '@prisma/client'
 import { UserService } from '../user/user.service'
 import { ReqWithTelegramContextAndUser } from '../auth/auth.types'
+import { CommentModel } from '../comment/models/comment.model'
+import { CommentService } from '../comment/comment.service'
 
 @ApiTags('Asset')
 @ApiSecurity('telegram-query')
@@ -29,6 +31,7 @@ export class AssetController {
   constructor(
     private readonly assetService: AssetService,
     private readonly userService: UserService,
+    private readonly commentService: CommentService,
   ) {}
 
   @ApiOkArrayResponse(AssetModel)
@@ -48,6 +51,12 @@ export class AssetController {
     @Query('category') category?: Category,
   ) {
     return mapToArrayResponse(await this.assetService.findAll({ limit, offset, category }), offset)
+  }
+
+  @ApiOkArrayResponse(CommentModel)
+  @Get(':id/comment')
+  async getComments(@Param('id') id: string) {
+    return this.commentService.getAllByAssetId({ assetId: id })
   }
 
   @ApiOkResponse({ type: AssetModel })
