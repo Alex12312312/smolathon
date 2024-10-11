@@ -47,6 +47,13 @@ export class AssetController {
 
   @ApiOkResponse({ type: AssetModel })
   @Serialize(AssetModel)
+  @Get(':id')
+  async findUnique(@Param('id') id: string) {
+    return await this.assetService.findUnique({ id: id })
+  }
+
+  @ApiOkResponse({ type: AssetModel })
+  @Serialize(AssetModel)
   @UseGuards(TelegramAuthGuard)
   @UseInterceptors(TelegramContextInterceptor)
   @Post()

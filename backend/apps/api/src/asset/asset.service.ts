@@ -62,4 +62,12 @@ export class AssetService {
       },
     })
   }
+
+  async findUnique(params: { id: string }): Promise<AssetModel | null> {
+    const { id } = params
+
+    return await this.prisma.asset.findUnique({
+      where: { id },
+    })
+  }
 }
