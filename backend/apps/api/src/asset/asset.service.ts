@@ -35,4 +35,24 @@ export class AssetService {
       },
     })
   }
+
+  async findAll(params: { limit?: number; offset?: number }): Promise<AssetModel[]> {
+    const { limit, offset } = params
+
+    return this.prisma.asset.findMany({
+      take: limit ?? 10,
+      skip: offset ?? 0,
+      select: {
+        id: true,
+        createdAt: true,
+        updatedAt: true,
+        image: true,
+        description: true,
+        title: true,
+        creatorId: true,
+        consumerId: true,
+        comments: true,
+      },
+    })
+  }
 }

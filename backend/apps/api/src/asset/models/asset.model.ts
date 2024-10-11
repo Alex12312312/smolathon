@@ -27,4 +27,4 @@ export class AssetModel implements Asset {
   consumerId: bigint | null
 }
 
-export type AssetCreate = Omit<AssetModel, 'id' | 'createdAt' | 'updatedAt'>
+export type AssetCreate = Omit<AssetModel, 'id' | 'createdAt' | 'updatedAt' | 'consumerId'>

@@ -44,6 +44,7 @@ export class UserService {
         telegramUsername: data.username,
         firstName: data.first_name,
         lastName: data.last_name,
+        avatarUrl: await this.avatar.getAvatarByTelegramId({ telegramId: data.id }),
       },
       create: {
         id: this.userId(),
@@ -53,6 +54,7 @@ export class UserService {
         telegramUsername: data.username,
         avatarUrl: await this.avatar.getAvatarByTelegramId({ telegramId: data.id }),
         wallet: null,
+        balance: 0,
       },
     })
   }

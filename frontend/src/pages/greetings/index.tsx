@@ -38,16 +38,17 @@ export const Greetings = () => {
                     navigator('/main')
                 }}
             >
-                <img src={cross}/>
+                {' '}
+                <img src={cross} alt="⮾" />
             </button>
-            <div className="absolute bottom-0 flex h-1/3 w-full flex-col content-center justify-center gap-[60px] rounded-lg bg-[#302B2BCF] pt-16 text-white">
-                <div className="flex w-4/5 flex-col self-center text-center text-xl">
+            <div className="absolute bottom-0 flex h-1/3 w-full flex-col justify-start gap-[20px] rounded-lg bg-[#302B2BCF] pt-16 text-white">
+                <div className="flex max-h-20 min-h-20 flex-col self-center text-center text-xl">
                     <div>{textes[selected]}</div>
                     {selected < 2 ? (
                         ''
                     ) : (
                         <Button
-                            className="mt-3 w-fit self-center bg-green-500 px-7"
+                            className="mt-2 w-fit animate-pulse self-center bg-green-500 px-7"
                             onClick={() => {
                                 navigator('/main')
                             }}
@@ -60,6 +61,9 @@ export const Greetings = () => {
                     ref={radioGroupRef}
                     className="flex flex-row gap-[44px] self-center"
                     value={selected.toString()}
+                    onChange={(e) => {
+                        console.log(e.target)
+                    }}
                 >
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem

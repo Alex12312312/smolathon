@@ -5,7 +5,7 @@ import { MainPage } from './pages/mainPage/'
 import Layout from './pages/layout'
 import ProfileMe from './pages/profile-me'
 import { TelegramProvider } from './lib/telegram/telegramProvider'
-import { Test } from './pages/componentTest'
+import { Feed } from './pages/feed'
 
 function App() {
     return (
@@ -114,6 +114,7 @@ function App() {
                             <Route path="/" element={<Greetings></Greetings>} />
                             <Route path="/main" element={<MainPage></MainPage>} />
                             <Route path="/me" element={<ProfileMe></ProfileMe>} />
+                            <Route path="/feed" element={<Feed></Feed>} />
                         </Routes>
                     </Layout>
                 </BrowserRouter>
