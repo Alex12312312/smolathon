@@ -61,7 +61,7 @@ function ProfileMe() {
                     <div className="flex flex-col gap-2 border-y border-item py-3">
                         <div className="text-2xl font-medium">Мой кошелек</div>
                         <div className="text-sm text-[#707579]">Ваш баланс</div>
-                        <div className="flex flex-row gap-4">
+                        <div className="flex flex-row gap-4 content-center">
                             <img src={coin} />
                             <div className="-translate-y-[1px]">
                                 <div className="flex flex-row gap-3 text-2xl">
