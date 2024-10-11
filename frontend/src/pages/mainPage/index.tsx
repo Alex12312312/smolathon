@@ -16,7 +16,7 @@ export const MainPage = () => {
             <div className={`w-fit flex flex-nowrap select-none ${currentPage === "Мои работы"? "font-bold" : ''}`} onClick={() => {changePage("Мои работы")}}>Мои работы</div>
             </div>
             {currentPage === "Каталог"?
-            <div className="mt-3 flex-col gap-5">
+            <div className="mx-1 mt-3 flex-col gap-5">
                 <div className="flex w-full flex-1 flex-grow flex-wrap items-stretch gap-2 self-stretch">
                     <CategoryCard
                         link="/feed"
