@@ -7,6 +7,7 @@ import { useGetAssetById } from '@/hooks/assets.hooks'
 import { useUserGetById } from '@/hooks/user.hooks'
 import heart from '../../assets/heart.svg'
 import { useState } from 'react'
+//import useFetch from '@/lib/hooks/useFetch'
 
 export const Asset = () => {
     const { id } = useParams()
@@ -23,6 +24,11 @@ export const Asset = () => {
         )
     }
 
+   /* const buyItem = () => { 
+        let requ =  useFetch(`/user/${id}`, "POST")}
+        requ.execute()
+    }
+        */
     return (
         <div className="flex h-[93vh] w-full select-none overflow-x-hidden overflow-y-scroll">
             <div className="w-full flex-col justify-between overflow-y-scroll">
@@ -34,7 +40,7 @@ export const Asset = () => {
                     </div>
 
                     <div className="flex flex-row gap-4">
-                        <Button className="w-full">Купить ({asset?.price ?? 0} SMOIIaTON)</Button>
+                        <Button className="w-full" >Купить ({asset?.price ?? 0} SMOIIaTON)</Button>
                         <Button
                             variant={liked ? 'outline' : 'default'}
                             onClick={() => {
