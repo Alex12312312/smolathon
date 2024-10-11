@@ -19,6 +19,9 @@ export const Asset = () => {
     const { user, isLoading: authorIsLoading } = useUserGetById(asset?.creatorId ?? '')
     const { comments, isLoading: commentIsLoading } = useGetCommentsByAssetId(asset?.id ?? '')
 
+    const { execute } = useFetch<AssetType>(`/user/${id}`, 'POST')
+
+    
     if (assetIsLoading || authorIsLoading || commentIsLoading) {
         return (
             <div className="flex h-[90vh] items-center justify-center">
@@ -26,8 +29,6 @@ export const Asset = () => {
             </div>
         )
     }
-    const { execute} = useFetch<AssetType>(`/user/${id}`, "POST")
-
     return (
         <div className="flex h-[93vh] w-full select-none overflow-x-hidden overflow-y-scroll">
             <div className="w-full flex-col justify-between overflow-y-scroll">
@@ -39,11 +40,14 @@ export const Asset = () => {
                     </div>
 
                     <div className="flex flex-row gap-4">
-                        <Button onClick={
-                            async () => {
+                        <Button
+                            onClick={async () => {
                                 console.log(await execute())
-                            }
-                        } className="w-full" >Купить ({asset?.price ?? 0} SMOIIaTON)</Button>
+                            }}
+                            className="w-full"
+                        >
+                            Купить ({asset?.price ?? 0} SMOIIaTON)
+                        </Button>
                         <Button
                             variant={liked ? 'outline' : 'default'}
                             onClick={() => {
