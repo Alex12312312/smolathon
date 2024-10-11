@@ -2,10 +2,10 @@ import { Button } from '@/components/ui/button.tsx'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useUserGetById } from '@/hooks/user.hooks'
 import { TelegramAvatar } from '@/components/telegramAvatar'
-import { useTelegram } from '@/lib/telegram/telegramProvider'
+//import { useTelegram } from '@/lib/telegram/telegramProvider'
 
 function ProfileUser() {
-    const telegram = useTelegram()
+    //const telegram = useTelegram()
     const navigate = useNavigate()
 
     const { id } = useParams<{ id: string }>()
@@ -44,7 +44,7 @@ function ProfileUser() {
                     <div className="absolute top-[-75px]">
                         <TelegramAvatar avatar={user?.avatarUrl} />
                     </div>
-                    <TelegramAvatar avatar={u} />
+                    <TelegramAvatar avatar={user?.avatarUrl} />
                     <div className="mt-[55px] select-none p-2 text-xl font-semibold">
                         {user?.firstName}
                     </div>

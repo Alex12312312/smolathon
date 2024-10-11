@@ -1,5 +1,4 @@
 import { Group } from '@/components/group'
-import { User } from '@/lib/api/types/user.types'
 import { useParams } from 'react-router-dom'
 import { Comment } from '@/components/comment'
 import { TelegramAvatar } from '@/components/telegramAvatar'
@@ -19,7 +18,7 @@ export const Asset = () => {
         )
     }
 
-    const { user, isLoading: authorIsLoading } = useUserGetById(asset?.creatorId ?? '')
+    const { user } = useUserGetById(asset?.creatorId ?? '')
 
     return (
         <div className="flex h-[93vh] w-full select-none overflow-x-hidden overflow-y-scroll">
