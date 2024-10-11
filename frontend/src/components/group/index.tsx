@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 type GroupProps = {
     children: ReactNode
-    name: string
+    name: "Категории" | "Задания" | "Мои работы"
     className?: string
 }
 
