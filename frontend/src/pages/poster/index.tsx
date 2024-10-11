@@ -9,5 +9,6 @@ export const Poster = () => {
         <EventLine picture={smolensk} title="Добрый кот" type="Мастер-класс"></EventLine>
         <EventLine picture={smolensk} title="Группа `Dabro`" type="Концерт"></EventLine>
         </div>
+        
     </div>
 }
