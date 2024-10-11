@@ -1,5 +1,5 @@
 import home from '../../assets/home-icon.svg'
-import CartIcon from '../../assets/cart-icon.svg'
+// import CartIcon from '../../assets/cart-icon.svg'
 import collections from '../../assets/collections-icon.svg'
 import profile from '../../assets/profile-icon.svg'
 import { Link, useLocation } from 'react-router-dom'
@@ -38,7 +38,7 @@ function Navbar() {
                 <NavbarIcon route="/main" src={home} text="Главная" />
                 <NavbarIcon route="/collections" src={collections} text="Коллекции" />
                 <NavbarIcon route="/me" src={profile} text="Профиль" />
-                <NavbarIcon route="/cart" src={CartIcon} text="Корзина" />
+                {/* <NavbarIcon route="/cart" src={CartIcon} text="Корзина" /> */}
             </div>
         </nav>
     )
