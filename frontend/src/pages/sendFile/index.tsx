@@ -34,6 +34,6 @@ export const SendFile = () => {
             </select>
             <div className="text-base text-gray-500 pl-4">Творчесво, созданное с использованием цифровых технологий</div>
         </div>
-        <button className="w-full bg-green-500" onClick={() => {}}>Опубликовать</button>
+        <button className="text-white w-4/5 rounded py-2 bg-green-500 self-center mb-2" onClick={() => {}}>Опубликовать</button>
     </div>
 }
