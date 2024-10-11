@@ -17,8 +17,8 @@ function NavbarIcon({ route, src, text }: { route: string; src: string; text: st
                 style={
                     isActive(route)
                         ? {
-                            filter: 'invert(34%) sepia(84%) saturate(2536%) hue-rotate(135deg) brightness(91%) contrast(101%)',
-                        }
+                              filter: 'invert(34%) sepia(84%) saturate(2536%) hue-rotate(135deg) brightness(91%) contrast(101%)',
+                          }
                         : undefined
                 }
             />
@@ -34,7 +34,7 @@ function NavbarIcon({ route, src, text }: { route: string; src: string; text: st
 function Navbar() {
     return (
         <nav>
-            <div className="mx-2 flex flex-row justify-evenly border-t border-gray-200 p-2">
+            <div className="mx-2 flex w-full flex-row justify-evenly bg-background p-2">
                 <NavbarIcon route="/main" src={home} text="Главная" />
                 <NavbarIcon route="/collections" src={collections} text="Коллекции" />
                 <NavbarIcon route="/me" src={profile} text="Профиль" />

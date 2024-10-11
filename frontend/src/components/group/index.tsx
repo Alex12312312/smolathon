@@ -2,8 +2,8 @@ import { cn } from '../../lib/utils'
 import { ReactNode } from 'react'
 
 type GroupProps = {
-    children: ReactNode
-    name: "Категории" | "Задания" | "Мои работы"
+    children?: ReactNode
+    name: string
     className?: string
 }
 

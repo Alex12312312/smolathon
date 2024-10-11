@@ -1,5 +1,4 @@
 // @ts-ignore
-
 export function fetcher(data: [url: string, token?: string, wallet?: string]) {
     const [url, token, wallet] = data
 
@@ -10,5 +9,7 @@ export function fetcher(data: [url: string, token?: string, wallet?: string]) {
             'Content-Type': 'application/json',
             ...(!!wallet && { 'X-TonWallet': wallet }),
         },
-    }).then((res) => res.json())
+    })
+        .then((res) => res.json())
+        .then((res) => res.result)
 }
