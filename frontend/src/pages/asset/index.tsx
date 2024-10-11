@@ -71,7 +71,7 @@ export const Asset = () => {
                     </Group>
 
                     <Group name="Комментарии">
-                        {comments?.map((comment) => (
+                        {comments?.data?.map((comment) => (
                             <Comment
                                 text={comment.content}
                                 author={[
