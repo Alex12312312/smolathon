@@ -21,7 +21,7 @@ export const Collection = () => {
     return (
         <>
             <Group
-                className="flex h-[90vh] select-none overflow-x-hidden overflow-y-scroll overscroll-none p-3"
+                className="mt-3 flex h-[90vh] select-none overflow-x-hidden overflow-y-scroll overscroll-none p-3"
                 name="Моя коллекция"
             >
                 <div className="flex flex-grow flex-wrap justify-center gap-3">
