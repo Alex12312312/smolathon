@@ -1,10 +1,11 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button.tsx'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useUserGetById } from '@/hooks/user.hooks'
 import { Accordion, AccordionItem } from '@/components/ui/accordion'
+import { TelegramAvatar } from '@/components/telegramAvatar'
 
 function ProfileUser() {
+    //const telegram = useTelegram()
     const navigate = useNavigate()
 
     const { id } = useParams<{ id: string }>()
@@ -41,19 +42,9 @@ function ProfileUser() {
 
                 <div className="relative mt-8 flex flex-col items-center">
                     <div className="absolute top-[-75px]">
-                        <Avatar className="h-[110px] w-[110px] border-4 border-white">
-                            <AvatarImage
-                                src={
-                                    'data:image/jpeg;charset=utf-8;base64,' +
-                                    user?.result?.avatarUrl
-                                }
-                                alt="User Avatar"
-                            />
-                            <AvatarFallback className="bg-[#7f7f7f] text-xl text-gray-800">
-                                CN
-                            </AvatarFallback>
-                        </Avatar>
+                        <TelegramAvatar avatar={user?.avatarUrl} />
                     </div>
+                    <TelegramAvatar avatar={user?.avatarUrl} />
                     <div className="mt-[55px] select-none p-2 text-xl font-semibold">
                         {user?.result?.firstName}
                     </div>

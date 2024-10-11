@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsString } from 'class-validator'
+import { Category } from '@prisma/client'
+import { IsEnum, IsOptional, IsString } from 'class-validator'
 
 export class AssetCreateDto {
   @ApiProperty()
@@ -15,6 +16,13 @@ export class AssetCreateDto {
   title: string
 
   @ApiProperty()
-  @IsString()
-  creatorId: string
+  creatorId: number
+
+  @ApiProperty({ enum: ['HeroesAndEvents', 'Activity', 'HistoricalSites', 'DigitalArt'] })
+  @IsEnum(Category)
+  @IsOptional()
+  category: Category
+
+  @ApiProperty()
+  price: number
 }

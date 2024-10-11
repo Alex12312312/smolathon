@@ -23,7 +23,7 @@ function NavbarIcon({ route, src, text }: { route: string; src: string; text: st
                 }
             />
             <h1
-                className={`select-none text-[10px] font-medium ${isActive(route) ? 'text-[#009951]' : 'text-gray-500'}`}
+                className={`select-none text-[10px] font-medium ${isActive(route) ? 'text-[#009951]' : 'text-[#707070]'}`}
             >
                 {text}
             </h1>

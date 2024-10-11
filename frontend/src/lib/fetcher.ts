@@ -1,7 +1,7 @@
 // @ts-ignore
 export function fetcher(data: [url: string, token?: string, wallet?: string]) {
     const [url, token, wallet] = data
-
+    console.log(url)
     return fetch(url, {
         method: 'GET',
         headers: {

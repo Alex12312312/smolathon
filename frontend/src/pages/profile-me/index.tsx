@@ -1,10 +1,12 @@
 import { useTelegram } from '@/lib/telegram/telegramProvider.tsx'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+//import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button.tsx'
 import { TonConnectButton } from '@tonconnect/ui-react'
-import Friend from '@/components/friend/friend.tsx'
+import Friend from '@/components/friend'
 import coin from '@/assets/coin.svg'
 import { useGetUserReferrals, useUserGetMe } from '@/hooks/user.hooks'
+import { TelegramAvatar } from '@/components/telegramAvatar'
+import { telegramForwardUrl } from '@/lib/utils'
 
 function ProfileMe() {
     const telegram = useTelegram()
@@ -13,11 +15,12 @@ function ProfileMe() {
         error: userError,
         isLoading: userIsLoading,
     } = useUserGetMe(telegram.webApp?.initData ?? '')
+
     const {
         referrals,
-        error: referralsError,
-        isLoading: referralsIsLoading,
-    } = useGetUserReferrals(telegram.webApp?.initData ?? '')
+        //error: referralsError,
+        //isLoading: referralsIsLoading,
+    } = useGetUserReferrals(telegram.webApp?.initData ?? '', { id: user?.id ?? '' })
 
     if (userIsLoading) {
         return (
@@ -42,44 +45,64 @@ function ProfileMe() {
                     <div className="absolute h-full w-full bg-black opacity-30"></div>
                 </div>
 
-                <div className="relative mt-8 flex flex-col items-center">
+                <div className="relative mt-8 flex flex-col items-center gap-2">
                     <div className="absolute top-[-75px]">
-                        <Avatar className="h-[110px] w-[110px] border-4 border-white">
-                            <AvatarImage
-                                src={'data:image/jpeg;charset=utf-8;base64,' + user?.avatarUrl}
-                                alt="User Avatar"
-                            />
-                            <AvatarFallback className="bg-[#7f7f7f] text-xl text-gray-800">
-                                CN
-                            </AvatarFallback>
-                        </Avatar>
+                        <TelegramAvatar
+                            avatar={user?.avatarUrl}
+                            className="h-[110px] w-[110px] border-4 border-item"
+                        />
                     </div>
-                    <div className="mt-[55px] select-none p-2 text-xl font-semibold">
+                    <div className="mt-[30px] select-none p-2 text-xl font-semibold">
                         {user?.firstName}
                     </div>
                 </div>
 
                 <div className="mt-4 flex w-full flex-grow flex-col justify-evenly px-4">
-                    <div className="flex flex-col gap-2 border-y border-gray-200 py-3">
+                    <div className="flex flex-col gap-2 border-y border-item py-3">
                         <div className="text-2xl font-medium">Мой кошелек</div>
                         <div className="text-sm text-[#707579]">Ваш баланс</div>
-                        <div className="flex flex-row gap-4">
+                        <div className="flex flex-row content-center gap-4">
                             <img src={coin} />
-                            <div>3.12412</div>
-                            <div>SMOIIaTON</div>
+                            <div className="-translate-y-[1px]">
+                                <div className="flex flex-row gap-3 text-2xl">
+                                    <span className="text-bold text-2xl">{user?.balance ?? 0}</span>{' '}
+                                    SMOIIaTON
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="self-center pt-7">
+                    <div className="self-center border-item pt-7">
                         <TonConnectButton className="w-[300px] rounded-sm text-black" />
                     </div>
-                    <Button className="my-4 bg-[#14AE5C] text-base font-bold text-white hover:scale-[1.01] active:scale-[0.99]">
+                    <Button
+                        className="my-4 bg-[#14AE5C] text-base font-bold text-white hover:scale-[1.01] active:scale-[0.99]"
+                        onClick={() => {
+                            telegram.webApp?.openTelegramLink(
+                                telegramForwardUrl(
+                                    'Приходи в Цифровой город! Участвуй и зарабатывай! 😼',
+                                    user?.id,
+                                ),
+                            )
+                        }}
+                    >
                         Пригласить друга
                     </Button>
                     <div className="flex flex-col items-start justify-between">
-                        <div className="text-lg font-bold">Приглашенные друзья</div>
+                        <div className="text-2xl font-medium">Приглашенные друзья</div>
                         <div className="flex flex-col gap-2 pt-4">
-                            <Friend />
-                            <Friend />
+                            {referrals && referrals?.length > 0 ? (
+                                referrals?.map((referral) => (
+                                    <Friend
+                                        name={[referral.firstName, referral.lastName].join(' ')}
+                                        username={referral.telegramUsername}
+                                        avatar={referral.avatarUrl}
+                                    ></Friend>
+                                ))
+                            ) : (
+                                <p className="text-[#707070]">
+                                    Пригласите друга и получите 100 монет!
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>

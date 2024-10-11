@@ -7,10 +7,11 @@ import { TelegramContextInterceptor } from '../auth/interceptors/telegram-contex
 import { TonWalletGuard } from '../auth/guards/ton-wallet.guard'
 import { AvatarService } from '../avatar/avatar.service'
 import { AvatarModule } from '../avatar/avatar.module'
+import { AssetModule } from '../asset/asset.module'
 
 @Module({
   exports: [UserService],
-  imports: [PrismaModule, AvatarModule],
+  imports: [PrismaModule, AvatarModule, AssetModule],
   providers: [
     UserService,
     {

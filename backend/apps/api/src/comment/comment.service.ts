@@ -48,4 +48,15 @@ export class CommentService {
       },
     })
   }
+
+  async getAllByAssetId(params: { assetId: string }): Promise<CommentModel[]> {
+    const { assetId } = params
+
+    return this.prisma.comment.findMany({
+      where: { assetId: assetId },
+      include: {
+        creator: true,
+      },
+    })
+  }
 }

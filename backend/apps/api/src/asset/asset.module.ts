@@ -6,10 +6,11 @@ import { Module } from '@nestjs/common'
 import { TelegramContextInterceptor } from '../auth/interceptors/telegram-context.interceptor'
 import { UserService } from '../user/user.service'
 import { AvatarModule } from '../avatar/avatar.module'
+import { CommentModule } from '../comment/comment.module'
 
 @Module({
   exports: [AssetService],
-  imports: [PrismaModule, AvatarModule],
+  imports: [PrismaModule, AvatarModule, CommentModule],
   providers: [
     AssetService,
     UserService,

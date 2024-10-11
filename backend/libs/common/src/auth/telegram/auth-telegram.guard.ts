@@ -25,7 +25,6 @@ export class TelegramAuthGuard implements CanActivate {
       const auth = request.headers['authorization']
 
       const decoded = querystring.unescape(auth)
-
       if (!auth) {
         return false
       }

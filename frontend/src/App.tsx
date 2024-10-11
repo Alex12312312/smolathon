@@ -7,6 +7,10 @@ import ProfileMe from './pages/profile-me'
 import { TelegramProvider } from './lib/telegram/telegramProvider'
 import { Feed } from './pages/feed'
 import TaskList from './components/task/task-list'
+import { SendFile } from './pages/sendFile'
+import { Asset } from './pages/asset'
+import { Collection } from './pages/collection'
+import { Poster } from './pages/poster'
 
 function App() {
     return (
@@ -115,7 +119,11 @@ function App() {
                             <Route path="/" element={<Greetings></Greetings>} />
                             <Route path="/main" element={<MainPage></MainPage>} />
                             <Route path="/me" element={<ProfileMe></ProfileMe>} />
+                            <Route path="/collections" element={<Collection />} />
+                            <Route path="/poster" element={<Poster></Poster>} />
                             <Route path="/feed" element={<Feed></Feed>} />
+                            <Route path="/sendFile" element={<SendFile />} />
+                            <Route path="/asset/:id" element={<Asset />} />
                         </Routes>
                     </Layout>
                 </BrowserRouter>

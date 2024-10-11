@@ -59,8 +59,8 @@ div::-webkit-scrollbar { /* chrome based */
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --item: 0 0% 100%;
     --popup: 0 0% 100%;
+    --item: 0 0% 90%;
   }
 
   .dark {
