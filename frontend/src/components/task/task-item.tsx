@@ -2,7 +2,7 @@ import coin from '@/assets/coin.svg'
 import { Button } from '../ui/button'
 import { useState } from 'react'
 import TaskPopup from './task-popup'
-function TaskItem() {
+function TaskItem({ title }: { title: string }) {
     const [isPopupOpen, setPopupOpen] = useState(false)
 
     const handleOpenPopup = () => {
@@ -17,7 +17,7 @@ function TaskItem() {
         <div>
             <div className="flex flex-row justify-between gap-4">
                 <div className="flex flex-col justify-between gap-4">
-                    <div className="text-base">«Смоленск через призму стекла»</div>
+                    <div className="text-base">{title}</div>
                     <div className="flex flex-row items-center gap-2">
                         <div className="text-sm font-medium text-[#FAA629]"> +1000</div>
                         <img src={coin} />

@@ -3,6 +3,7 @@ import category1 from '@/assets/category1.svg'
 import category2 from '@/assets/category2.svg'
 import category3 from '@/assets/category3.svg'
 import category4 from '@/assets/category4.svg'
+import TaskList from '@/components/task/task-list'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Poster } from '../poster'
@@ -98,21 +99,7 @@ export const MainPage = () => {
                 {currentPage === 'Задания' ? (
                     <div className="m-4 flex-col gap-5">
                         <div className="flex w-full flex-1 flex-grow flex-wrap items-stretch gap-2 self-stretch">
-                            <CategoryCard
-                                className="w-[200px] flex-grow bg-[#925AFF]"
-                                text="Герои и события"
-                            >
-                                <img
-                                    src={category1}
-                                    className="absolute bottom-0 right-0 h-[110px]"
-                                />
-                            </CategoryCard>
-                            <CategoryCard className="flex-grow bg-[#009951]" text="Мероприятия">
-                                <img
-                                    src={category2}
-                                    className="absolute bottom-0 right-0 h-[110px]"
-                                />
-                            </CategoryCard>
+                            <TaskList/>
                         </div>
                     </div>
                 ) : (
