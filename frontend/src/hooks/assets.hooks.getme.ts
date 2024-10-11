@@ -11,5 +11,5 @@ export const useGetMe = (token: string) => {
         fetcher,
     )
 
-    return { user: data?.result ?? undefined, error, isLoading }
+    return { user: data ?? undefined, error, isLoading }
 }

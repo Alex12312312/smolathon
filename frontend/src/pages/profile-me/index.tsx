@@ -1,19 +1,21 @@
 import { useTelegram } from '@/lib/telegram/telegramProvider.tsx'
-import { useGetMe } from '../../hooks/user.hooks.getme.ts'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button.tsx'
 import { TonConnectButton } from '@tonconnect/ui-react'
 import Friend from '@/components/friend/friend.tsx'
 import coin from '@/assets/coin.svg'
+import { useGetMe } from '@/hooks/assets.hooks.getme'
 
 function ProfileMe() {
     const telegram = useTelegram()
     const { user, error, isLoading } = useGetMe(telegram.webApp?.initData ?? '')
 
+    console.log(user)
+
     if (isLoading) {
-       return (
-            <div className="flex items-center justify-center h-[90vh]">
-                <div className="animate-spin h-10 w-10 border-4 border-t-transparent border-blue-500 rounded-full"></div>
+        return (
+            <div className="flex h-[90vh] items-center justify-center">
+                <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
             </div>
         )
     }
@@ -46,7 +48,7 @@ function ProfileMe() {
                         </Avatar>
                     </div>
                     <div className="mt-[55px] select-none p-2 text-xl font-semibold">
-                        {telegram.user?.first_name}
+                        {user?.firstName}
                     </div>
                 </div>
 
@@ -63,12 +65,12 @@ function ProfileMe() {
                     <div className="self-center pt-7">
                         <TonConnectButton className="w-[300px] rounded-sm text-black" />
                     </div>
-                    <Button className="my-4 bg-[#14AE5C] text-base font-bold text-white  hover:scale-[1.01] active:scale-[0.99]">
+                    <Button className="my-4 bg-[#14AE5C] text-base font-bold text-white hover:scale-[1.01] active:scale-[0.99]">
                         Пригласить друга
                     </Button>
                     <div className="flex flex-col items-start justify-between">
                         <div className="text-lg font-bold">Приглашенные друзья</div>
-                        <div className="pt-4 flex gap-2 flex-col">
+                        <div className="flex flex-col gap-2 pt-4">
                             <Friend />
                             <Friend />
                         </div>
