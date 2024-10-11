@@ -6,8 +6,8 @@ interface IEventLine {
 
 export const EventLine = (props: IEventLine) => {
     return (
-        <div className="flex h-12 w-5/6 flex-row self-center">
-            <img src={props.picture}></img>
+        <div className="flex h-12 w-5/6 flex-row self-center justify-between">
+            <img className="object-scale size-12 rounded-full" src={props.picture}></img>
             <div className="flex w-1/2 flex-col">
                 <div className="font-bold text-black">{props.title}</div>
                 <div className="font-bold text-[#707070]">{props.type}</div>
