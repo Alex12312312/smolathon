@@ -24,13 +24,15 @@ export const useUserGetMe = (token: string) => {
     return { user: data?.result ?? undefined, error, isLoading }
 }
 
-export const useGetUserReferrals = (token: string) => {
+export const useGetUserReferrals = (token: string, { id }: { id: string }) => {
     const { data, error, isLoading } = useSWR<ApiResponse<{ data: User[] }>>(
-        [`${import.meta.env.VITE_API_URL}/user/referrals`, token],
+        [`${import.meta.env.VITE_API_URL}/user/${id}/referrals`, token],
 
         // @ts-ignore
         fetcher,
     )
+
+    console.log(data)
 
     return { referrals: data?.result?.data, error, isLoading }
 }

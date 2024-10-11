@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button.tsx'
 import { TonConnectButton } from '@tonconnect/ui-react'
 import Friend from '@/components/friend/friend.tsx'
 import coin from '@/assets/coin.svg'
-import { useUserGetMe } from '@/hooks/user.hooks'
+import { useGetUserReferrals, useUserGetMe } from '@/hooks/user.hooks'
 
 function ProfileMe() {
     const telegram = useTelegram()
@@ -13,12 +13,7 @@ function ProfileMe() {
         error: userError,
         isLoading: userIsLoading,
     } = useUserGetMe(telegram.webApp?.initData ?? '')
-    /*const {
-        referrals,
-        error: referralsError,
-        isLoading: referralsIsLoading,
-    } = useGetUserReferrals(telegram.webApp?.initData ?? '')
-*/
+
     if (userIsLoading) {
         return (
             <div className="flex h-[90vh] items-center justify-center">
@@ -26,6 +21,12 @@ function ProfileMe() {
             </div>
         )
     }
+
+    const {
+        referrals,
+        //error: referralsError,
+        //isLoading: referralsIsLoading,
+    } = useGetUserReferrals(telegram.webApp?.initData ?? '', { id: user?.id ?? '' })
 
     if (userError) {
         return <div>Error occurred: {userError.message}</div>
@@ -60,13 +61,17 @@ function ProfileMe() {
                 </div>
 
                 <div className="mt-4 flex w-full flex-grow flex-col justify-evenly px-4">
-                    <div className="flex flex-col gap-2 border-y border-gray-200 py-3">
+                    <div className="flex flex-col gap-2 border-y border-item py-3">
                         <div className="text-2xl font-medium">Мой кошелек</div>
                         <div className="text-sm text-[#707579]">Ваш баланс</div>
                         <div className="flex flex-row gap-4">
                             <img src={coin} />
-                            <div>3.12412</div>
-                            <div>SMOIIaTON</div>
+                            <div>
+                                <div className="flex flex-row gap-3 text-2xl">
+                                    <span className="text-bold text-2xl">{user?.balance ?? 0}</span>{' '}
+                                    монет
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="self-center pt-7">
@@ -78,8 +83,19 @@ function ProfileMe() {
                     <div className="flex flex-col items-start justify-between">
                         <div className="text-lg font-bold">Приглашенные друзья</div>
                         <div className="flex flex-col gap-2 pt-4">
-                            <Friend />
-                            <Friend />
+                            {referrals && referrals?.length > 0 ? (
+                                referrals?.map((referral) => (
+                                    <Friend
+                                        name={[referral.firstName, referral.lastName].join(' ')}
+                                        username={referral.telegramUsername}
+                                        avatar={referral.avatarUrl}
+                                    ></Friend>
+                                ))
+                            ) : (
+                                <p className="text-gray-600">
+                                    Пригласите друга и получите 100 монет!
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -8,4 +8,5 @@ export type User = {
     lastName: string | null
     telegramUsername: string | null
     wallet: string | null
+    balance: number
 }
