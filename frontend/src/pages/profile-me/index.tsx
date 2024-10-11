@@ -1,10 +1,10 @@
 import { useTelegram } from '@/lib/telegram/telegramProvider.tsx'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback /*, AvatarImage */} from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button.tsx'
 import { TonConnectButton } from '@tonconnect/ui-react'
 import Friend from '@/components/friend/friend.tsx'
 import coin from '@/assets/coin.svg'
-import { useGetMe } from '@/hooks/assets.hooks.getme'
+//import { useGetMe } from '@/hooks/assets.hooks.getme'
 
 function ProfileMe() {
     const telegram = useTelegram()
