@@ -119,14 +119,12 @@ export const MainPage = () => {
                                     className="absolute bottom-0 right-0 h-[110px]"
                                 />
                             </CategoryCard>
-                            <EventLine title="Event" picture="nothing" type="Спектакль"></EventLine>
                         </div>
                     </div>
                 ) : (
                     ''
                 )}
             </div>
-<<<<<<< HEAD
             {currentPage === "Каталог"?
             <div className="mx-1 mt-3 flex-col gap-5">
                 <div className="flex w-full flex-1 flex-grow flex-wrap items-stretch gap-2 self-stretch">
@@ -188,8 +186,5 @@ export const MainPage = () => {
                 </div>
             </div>:""}
             </div> 
-=======
->>>>>>> 1d1fd88a717d2c6a2d625373342fd84b53183ece
-        </div>
     )
 }
