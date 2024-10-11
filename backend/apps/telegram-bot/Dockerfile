@@ -14,7 +14,7 @@ RUN pnpm install
 RUN ls
 
 RUN pnpm run schema:generate
-RUN pnpm run build storage
+RUN pnpm run build telegram-bot
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
