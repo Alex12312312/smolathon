@@ -81,7 +81,6 @@ export const MainPage = () => {
                                     className="absolute bottom-0 right-0 h-[110px]"
                                 />
                             </CategoryCard>
-                            <button onClick={()=>{navigator("/poster")}}>Переход на афишу</button>
                         </div>
                     </div>
                 ) : (
@@ -122,6 +121,7 @@ export const MainPage = () => {
                                     className="absolute bottom-0 right-0 h-[110px]"
                                 />
                             </CategoryCard>
+                            <button onClick={()=>{navigator("/poster")}}>Переход на афишу</button>
                         </div>
                     </div>
                 ) : (
