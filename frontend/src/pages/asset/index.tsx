@@ -21,7 +21,6 @@ export const Asset = () => {
 
     const { execute } = useFetch<AssetType>(`/user/${id}`, 'POST')
 
-    
     if (assetIsLoading || authorIsLoading || commentIsLoading) {
         return (
             <div className="flex h-[90vh] items-center justify-center">
@@ -30,7 +29,7 @@ export const Asset = () => {
         )
     }
     return (
-        <div className="flex h-[93vh] w-full select-none overflow-x-hidden overflow-y-scroll">
+        <div className="flex h-[90vh] w-full select-none overflow-x-hidden overflow-y-scroll">
             <div className="w-full flex-col justify-between overflow-y-scroll">
                 <div className="flex flex-col gap-4 p-4">
                     <h1 className="text-3xl font-bold">{asset?.title}</h1>
