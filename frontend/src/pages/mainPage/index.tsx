@@ -3,6 +3,7 @@ import category1 from '@/assets/category1.svg'
 import category2 from '@/assets/category2.svg'
 import category3 from '@/assets/category3.svg'
 import category4 from '@/assets/category4.svg'
+import { EventLine } from '@/components/eventLine/eventLine'
 import { useState } from 'react'
 
 export const MainPage = () => {
@@ -71,7 +72,7 @@ export const MainPage = () => {
                     >
                         <img src={category1} className="absolute bottom-0 right-0 h-[110px]" />
                     </CategoryCard>
-                    
+                    <EventLine title="Event" picture="nothing" type="Спектакль" ></EventLine>
                     
                 </div>
             </div>:""}
