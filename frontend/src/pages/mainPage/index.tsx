@@ -5,7 +5,6 @@ import category1 from '@/assets/category1.svg'
 import category2 from '@/assets/category2.svg'
 import category3 from '@/assets/category3.svg'
 import category4 from '@/assets/category4.svg'
-import { useTelegram } from '@/lib/telegram/telegramProvider'
 
 export const MainPage = () => {
     return (

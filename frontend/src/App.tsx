@@ -5,13 +5,14 @@ import { MainPage } from './pages/mainPage/'
 import Layout from './pages/layout'
 import ProfileMe from './pages/profile-me'
 import { TelegramProvider } from './lib/telegram/telegramProvider'
+import { Test } from './pages/componentTest'
 
 function App() {
     return (
         <TelegramProvider>
             <TonConnectUIProvider
                 manifestUrl="https://s3.timeweb.cloud/c682ec52-c9a44753-1274-459e-a8c2-4a6a310b5f93/public/manifest.json"
-                uiPreferences={{ theme: THEME.DARK }}
+                uiPreferences={{ theme: THEME.DARK, borderRadius: 's' }}
                 walletsListConfiguration={{
                     includeWallets: [
                         {

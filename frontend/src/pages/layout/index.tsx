@@ -13,7 +13,7 @@ function Layout({ children }: LayoutProps) {
     }
 
     return (
-        <div className="flex flex-col justify-between h-dvh">
+        <div className="flex flex-col justify-between h-dvh ">
             <main className='h-[95%]'>{children}</main>
             <Navbar />
         </div>
