@@ -137,3 +137,17 @@ export const useGetAssetById = (id: string) => {
 
     return { asset: data?.result, error, isLoading }
 }
+
+export const useGetAssetsByUserId = (id: string) => {
+    const { data, error, isLoading } = useSWR<ApiResponse<{ data: Asset[] }>>(
+        [`${import.meta.env.VITE_API_URL}/user/${id}/asset`],
+        // @ts-ignore
+        longFetcher,
+    )
+
+    console.log(`${import.meta.env.VITE_API_URL}/user/${id}/asset`)
+
+    console.log({ data, penis: true })
+
+    return { asset: data?.result?.data, error, isLoading }
+}

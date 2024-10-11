@@ -61,7 +61,7 @@ function ProfileMe() {
                     <div className="flex flex-col gap-2 border-y border-item py-3">
                         <div className="text-2xl font-medium">Мой кошелек</div>
                         <div className="text-sm text-[#707579]">Ваш баланс</div>
-                        <div className="flex flex-row gap-4 content-center">
+                        <div className="flex flex-row content-center gap-4">
                             <img src={coin} />
                             <div className="-translate-y-[1px]">
                                 <div className="flex flex-row gap-3 text-2xl">
@@ -71,7 +71,7 @@ function ProfileMe() {
                             </div>
                         </div>
                     </div>
-                    <div className="self-center pt-7">
+                    <div className="self-center border-item pt-7">
                         <TonConnectButton className="w-[300px] rounded-sm text-black" />
                     </div>
                     <Button
@@ -88,7 +88,7 @@ function ProfileMe() {
                         Пригласить друга
                     </Button>
                     <div className="flex flex-col items-start justify-between">
-                        <div className="text-lg font-bold">Приглашенные друзья</div>
+                        <div className="text-2xl font-medium">Приглашенные друзья</div>
                         <div className="flex flex-col gap-2 pt-4">
                             {referrals && referrals?.length > 0 ? (
                                 referrals?.map((referral) => (
@@ -99,7 +99,7 @@ function ProfileMe() {
                                     ></Friend>
                                 ))
                             ) : (
-                                <p className="text-gray-600">
+                                <p className="text-[#707070]">
                                     Пригласите друга и получите 100 монет!
                                 </p>
                             )}
