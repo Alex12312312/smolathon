@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button.tsx'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useUserGetById } from '@/hooks/user.hooks'
