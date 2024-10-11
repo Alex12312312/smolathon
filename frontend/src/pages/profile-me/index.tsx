@@ -10,7 +10,6 @@ function ProfileMe() {
     const telegram = useTelegram()
     const { user, error, isLoading } = useGetMe(telegram.webApp?.initData ?? '')
 
-    console.log(user)
 
     if (isLoading) {
         return (
