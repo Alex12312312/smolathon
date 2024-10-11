@@ -14,6 +14,12 @@ function ProfileMe() {
         isLoading: userIsLoading,
     } = useUserGetMe(telegram.webApp?.initData ?? '')
 
+    const {
+        referrals,
+        //error: referralsError,
+        //isLoading: referralsIsLoading,
+    } = useGetUserReferrals(telegram.webApp?.initData ?? '', { id: user?.id ?? '' })
+
     if (userIsLoading) {
         return (
             <div className="flex h-[90vh] items-center justify-center">
@@ -21,12 +27,6 @@ function ProfileMe() {
             </div>
         )
     }
-
-    const {
-        referrals,
-        //error: referralsError,
-        //isLoading: referralsIsLoading,
-    } = useGetUserReferrals(telegram.webApp?.initData ?? '', { id: user?.id ?? '' })
 
     if (userError) {
         return <div>Error occurred: {userError.message}</div>
