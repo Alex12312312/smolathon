@@ -26,7 +26,7 @@ export const Asset = () => {
             </div>
         )
     }
-    const { execute, data, error, isLoading } = useFetch<Asset>(`/user/${id}`, "POST")
+    const { execute} = useFetch<Asset>(`/user/${id}`, "POST")
 
     return (
         <div className="flex h-[93vh] w-full select-none overflow-x-hidden overflow-y-scroll">
