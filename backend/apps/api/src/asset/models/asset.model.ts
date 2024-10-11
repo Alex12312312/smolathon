@@ -1,5 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { Asset } from '@prisma/client'
+import { Asset, $Enums } from '@prisma/client'
+
+export type Category = $Enums.Category
 
 export class AssetModel implements Asset {
   @ApiProperty()
@@ -21,7 +23,10 @@ export class AssetModel implements Asset {
   title: string
 
   @ApiProperty()
-  creatorId: string
+  creatorId: bigint
+
+  @ApiProperty()
+  category: Category
 
   @ApiProperty()
   consumerId: bigint | null

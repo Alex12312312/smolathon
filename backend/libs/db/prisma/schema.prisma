@@ -13,6 +13,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Category {
+  HeroesAndEvents
+  Activity
+  HistoricalSites
+  DigitalArt
+
+  @@map("category")
+}
+
 model Users {
   id String @id
 
@@ -74,11 +83,15 @@ model Asset {
   description String
   title       String
 
-  creator   Users  @relation("user_assets", fields: [creatorId], references: [id])
-  creatorId String @map("creator_id")
+
+  creator Users @relation("user_assets", fields: [creatorId], references: [telegramId])
+  creatorId BigInt @map("creator_id")
+
 
   consumer   Users?  @relation("user_assets_own", fields: [consumerId], references: [telegramId])
   consumerId BigInt? @map("consumer_id")
+
+  category Category
 
   comments Comment[]
 
