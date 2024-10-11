@@ -9,7 +9,5 @@ export function fetcher(data: [url: string, token?: string, wallet?: string]) {
             'Content-Type': 'application/json',
             ...(!!wallet && { 'X-TonWallet': wallet }),
         },
-    })
-        .then((res) => res.json())
-        .then((res) => res.result)
+    }).then((res) => res.json())
 }

@@ -3,7 +3,17 @@ import { User } from '@/lib/api/types/user.types'
 import { ApiResponse } from '@/lib/api.types'
 import { fetcher } from '@/lib/fetcher'
 
-export const useGetMe = (token: string) => {
+export const useUserGetById = (id: string) => {
+    const { data, error, isLoading } = useSWR<ApiResponse<User>>(
+        [`${import.meta.env.VITE_API_URL}/user/${id}`],
+        // @ts-ignore
+        fetcher,
+    )
+
+    return { user: data ?? undefined, error, isLoading }
+}
+
+export const useUserGetMe = (token: string) => {
     const { data, error, isLoading } = useSWR<ApiResponse<User>>(
         [`${import.meta.env.VITE_API_URL}/user/me`, token],
 
@@ -11,5 +21,16 @@ export const useGetMe = (token: string) => {
         fetcher,
     )
 
-    return { user: data ?? undefined, error, isLoading }
+    return { user: data?.result ?? undefined, error, isLoading }
+}
+
+export const useGetUserReferrals = (token: string) => {
+    const { data, error, isLoading } = useSWR<ApiResponse<{ data: User[] }>>(
+        [`${import.meta.env.VITE_API_URL}/user/referrals`, token],
+
+        // @ts-ignore
+        fetcher,
+    )
+
+    return { referrals: data?.result?.data, error, isLoading }
 }

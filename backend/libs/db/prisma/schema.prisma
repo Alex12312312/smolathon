@@ -34,20 +34,38 @@ model Users {
   firstName        String  @map("first_name")
   lastName         String? @map("last_name")
   telegramUsername String? @map("telegram_username")
-  wallet String?
-  balance Int @default(0)
-  assets Asset[] @relation("user_assets")
-  assetsOwn Asset[] @relation("user_assets_own")
-  comments Comment[]
+  wallet           String?
+  balance          Int     @default(0)
+
+  assets    Asset[]   @relation("user_assets")
+  assetsOwn Asset[]   @relation("user_assets_own")
+  comments  Comment[]
+
+  invites   Invite[] @relation("invites")
+  invitedBy Invite?  @relation("invited_by")
 
   @@index([telegramId])
   @@map("users")
 }
 
+model Invite {
+  sender   Users  @relation("invites", fields: [senderId], references: [id])
+  senderId String @map("sender_id")
+
+  receiver   Users  @relation("invited_by", fields: [receiverId], references: [id])
+  receiverId String @unique @map("receiver_id")
+
+  createdAt DateTime @default(now())
+
+  @@id([senderId, receiverId])
+  @@unique([senderId, receiverId])
+  @@map("invites")
+}
+
 model File {
-  id            String     @id
-  type          String     
-  original_name String     
+  id            String @id
+  type          String
+  original_name String
   region        String
   bucket        String
   url           String
@@ -55,20 +73,22 @@ model File {
   @@map("files")
 }
 
-model Asset{
+model Asset {
   id String @id
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-  
-  image String
+
+  image       String
   description String
-  title String
+  title       String
+
 
   creator Users @relation("user_assets", fields: [creatorId], references: [telegramId])
   creatorId BigInt @map("creator_id")
 
-  consumer Users? @relation("user_assets_own", fields: [consumerId], references: [telegramId])
+
+  consumer   Users?  @relation("user_assets_own", fields: [consumerId], references: [telegramId])
   consumerId BigInt? @map("consumer_id")
 
   category Category
@@ -78,7 +98,7 @@ model Asset{
   @@map("asset")
 }
 
-model Comment{
+model Comment {
   id String @id
 
   createdAt DateTime @default(now()) @map("created_at")
@@ -86,10 +106,10 @@ model Comment{
 
   content String
 
-  creator Users @relation(fields: [creatorId], references: [telegramId])
+  creator   Users  @relation(fields: [creatorId], references: [telegramId])
   creatorId BigInt @map("creator_id")
 
-  asset Asset @relation(fields: [assetId], references: [id])
+  asset   Asset  @relation(fields: [assetId], references: [id])
   assetId String @map("asset_id")
 
   @@map("comment")
