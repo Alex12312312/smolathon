@@ -8,6 +8,7 @@ import { TelegramProvider } from './lib/telegram/telegramProvider'
 import { Feed } from './pages/feed'
 import { SendFile } from './pages/sendFile'
 import { Asset } from './pages/asset'
+import { Poster } from './pages/poster'
 
 function App() {
     return (
@@ -116,6 +117,7 @@ function App() {
                             <Route path="/" element={<Greetings></Greetings>} />
                             <Route path="/main" element={<MainPage></MainPage>} />
                             <Route path="/me" element={<ProfileMe></ProfileMe>} />
+                            <Route path="/poster" element={<Poster></Poster>}/>
                             <Route path="/feed" element={<Feed></Feed>} />
                             <Route path="/sendFile" element={<SendFile />} />
                             <Route path="/asset/:id" element={<Asset />} />
