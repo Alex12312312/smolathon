@@ -66,10 +66,10 @@ function ProfileMe() {
                         <div className="text-sm text-[#707579]">Ваш баланс</div>
                         <div className="flex flex-row gap-4">
                             <img src={coin} />
-                            <div>
+                            <div className="-translate-y-[1px]">
                                 <div className="flex flex-row gap-3 text-2xl">
                                     <span className="text-bold text-2xl">{user?.balance ?? 0}</span>{' '}
-                                    монет
+                                    SMOIIaTON
                                 </div>
                             </div>
                         </div>
