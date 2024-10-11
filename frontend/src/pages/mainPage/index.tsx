@@ -4,8 +4,10 @@ import category2 from '@/assets/category2.svg'
 import category3 from '@/assets/category3.svg'
 import category4 from '@/assets/category4.svg'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const MainPage = () => {
+    const navigator = useNavigate();
     const [currentPage, changePage] = useState('Каталог')
     return (
         <div className="flex h-full w-full flex-col justify-between">
@@ -79,6 +81,7 @@ export const MainPage = () => {
                                     className="absolute bottom-0 right-0 h-[110px]"
                                 />
                             </CategoryCard>
+                            <button onClick={()=>{navigator("/poster")}}></button>
                         </div>
                     </div>
                 ) : (
