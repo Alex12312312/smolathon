@@ -5,11 +5,9 @@ import category3 from '@/assets/category3.svg'
 import category4 from '@/assets/category4.svg'
 import TaskList from '@/components/task/task-list'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Poster } from '../poster'
 
 export const MainPage = () => {
-    const navigator = useNavigate();
     const [currentPage, changePage] = useState('Каталог')
     return (
         <div className="flex h-full w-full flex-col justify-between">
