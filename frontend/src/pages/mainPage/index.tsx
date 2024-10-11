@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import { CategoryCard } from '../../components/categoryCard'
 import category1 from '@/assets/category1.svg'
 import category2 from '@/assets/category2.svg'
