@@ -53,7 +53,6 @@ export const Feed = () => {
                 return 'Каталог'
         }
     }
-
     return (
         <>
             <Group
