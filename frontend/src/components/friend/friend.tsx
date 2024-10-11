@@ -16,7 +16,7 @@ function Friend({
                     src={'data:image/jpeg;charset=utf-8;base64,' + avatar}
                     alt="User Avatar"
                 />
-                <AvatarFallback className="bg-item text-sm text-gray-800">CN</AvatarFallback>
+                <AvatarFallback className="bg-item text-sm text-gray-800">😼</AvatarFallback>
             </Avatar>
             <div className="flex flex-col justify-evenly">
                 <div className="text-base font-semibold">{name}</div>

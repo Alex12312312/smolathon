@@ -51,7 +51,7 @@ function ProfileMe() {
                                 alt="User Avatar"
                             />
                             <AvatarFallback className="bg-[#7f7f7f] text-xl text-gray-800">
-                                CN
+                                😼
                             </AvatarFallback>
                         </Avatar>
                     </div>
