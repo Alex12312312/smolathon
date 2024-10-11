@@ -1,6 +1,5 @@
 import { EventLine } from '@/components/eventLine/eventLine'
 import smolensk from '../../assets/smolensk.png'
-import Letter from '../../assets/letter.svg'
 export const Poster = () => {
     return <div className="w-full h-full flex flex-col gap-3">
         <div className="w-full flex flex-row justify-between content-center gap-1">
