@@ -1,0 +1,65 @@
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button.tsx'
+import { useNavigate, useParams } from 'react-router-dom';
+import { useGetUserById } from '@/hooks/user.hooks';
+
+function ProfileUser() {
+    const navigate = useNavigate();
+    
+    const { id } = useParams<{ id: string }>();
+
+    if (!id) {
+        navigate('/');
+        return null; 
+    }
+
+    const { user, error, isLoading } = useGetUserById(id);
+
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center h-[90vh]">
+                <div className="animate-spin h-10 w-10 border-4 border-t-transparent border-blue-500 rounded-full"></div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return <div>Error occurred: {error.message}</div>;
+    }
+
+    return (
+        <div className="flex h-[90vh] w-full select-none overflow-x-hidden overflow-y-scroll">
+            <div className="w-full flex-col justify-between overflow-y-scroll pb-5">
+                <div className="relative h-[110px] w-full overflow-hidden">
+                    <img
+                        src={'data:image/jpeg;charset=utf-8;base64,' + user?.avatarUrl}
+                        className="absolute h-full w-full scale-150 object-cover blur-lg"
+                    />
+                    <div className="absolute h-full w-full bg-black opacity-30"></div>
+                </div>
+
+                <div className="relative mt-8 flex flex-col items-center">
+                    <div className="absolute top-[-75px]">
+                        <Avatar className="h-[110px] w-[110px] border-4 border-white">
+                            <AvatarImage
+                                src={'data:image/jpeg;charset=utf-8;base64,' + user?.avatarUrl}
+                                alt="User Avatar"
+                            />
+                            <AvatarFallback className="bg-[#7f7f7f] text-xl text-gray-800">
+                                CN
+                            </AvatarFallback>
+                        </Avatar>
+                    </div>
+                    <div className="mt-[55px] select-none p-2 text-xl font-semibold">
+                        {user?.firstName}
+                    </div>
+                </div>
+                <Button className="my-4 bg-[#14AE5C] text-base font-bold text-white hover:scale-[1.01] active:scale-[0.99]">
+                    Поделиться аккаунтом
+                </Button>
+            </div>
+        </div>
+    );
+}
+
+export default ProfileUser;
