@@ -124,8 +124,7 @@ export const MainPage = () => {
                             <button onClick={()=>{navigator("/poster")}}>Переход на афишу</button>
                         </div>
                     </div>
-                ) : (
-                    ''
+                ) : ( ''
                 )}
             </div>
             </div> 
