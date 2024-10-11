@@ -6,16 +6,16 @@ import { Button } from '@/components/ui/button'
 import { useGetAssetById } from '@/hooks/assets.hooks'
 import { useUserGetById } from '@/hooks/user.hooks'
 import heart from '../../assets/heart.svg'
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const Asset = () => {
     const { id } = useParams()
-    const { asset, isLoading } = useGetAssetById(id ?? '')
-    const { user, isLoading: authorIsLoading } = useUserGetById(asset?.creatorId ?? '')
-
     const [liked, setLike] = useState(false)
 
-    if (isLoading || authorIsLoading) {
+    const { asset, isLoading: assetIsLoading } = useGetAssetById(id ?? '')
+    const { user, isLoading: authorIsLoading } = useUserGetById(asset?.creatorId ?? '')
+
+    if (assetIsLoading || authorIsLoading) {
         return (
             <div className="flex h-[90vh] items-center justify-center">
                 <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
@@ -23,7 +23,11 @@ export const Asset = () => {
         )
     }
 
-    //const { user } = useUserGetById(asset?.creatorId ?? '')
+    useEffect(() => {
+        if (asset?.creatorId) {
+            useUserGetById(asset.creatorId)
+        }
+    }, [asset])
 
     return (
         <div className="flex h-[93vh] w-full select-none overflow-x-hidden overflow-y-scroll">
