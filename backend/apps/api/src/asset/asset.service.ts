@@ -1,6 +1,7 @@
 import { PrismaService } from '@app/db'
 import { Inject, Injectable } from '@nestjs/common'
 import { AssetCreate, AssetModel } from './models/asset.model'
+import { Category } from '@prisma/client'
 
 @Injectable()
 export class AssetService {
@@ -36,10 +37,15 @@ export class AssetService {
     })
   }
 
-  async findAll(params: { limit?: number; offset?: number }): Promise<AssetModel[]> {
-    const { limit, offset } = params
+  async findAll(params: {
+    limit?: number
+    offset?: number
+    category?: Category
+  }): Promise<AssetModel[]> {
+    const { limit, offset, category } = params
 
     return this.prisma.asset.findMany({
+      where: { category: category },
       take: limit ?? 10,
       skip: offset ?? 0,
       select: {
@@ -51,6 +57,7 @@ export class AssetService {
         title: true,
         creatorId: true,
         consumerId: true,
+        category: true,
         comments: true,
       },
     })
