@@ -2,8 +2,10 @@ import { Button } from '@/components/ui/button.tsx'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useUserGetById } from '@/hooks/user.hooks'
 import { TelegramAvatar } from '@/components/telegramAvatar'
+import { useTelegram } from '@/lib/telegram/telegramProvider'
 
 function ProfileUser() {
+    const telegram = useTelegram()
     const navigate = useNavigate()
 
     const { id } = useParams<{ id: string }>()
