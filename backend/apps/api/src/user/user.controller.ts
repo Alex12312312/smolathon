@@ -6,12 +6,17 @@ import { Controller, Get, Param, UseInterceptors, UseGuards, Req } from '@nestjs
 import { TelegramContextInterceptor } from '../auth/interceptors/telegram-context.interceptor'
 import { TelegramAuthGuard } from '@app/common/auth/telegram/auth-telegram.guard'
 import { RequestWithTelegramContext } from '@app/common/controller/controller.model'
+import { AssetModel } from '../asset/models/asset.model'
+import { AssetService } from '../asset/asset.service'
 
 @ApiTags('Users')
 @ApiSecurity('telegram-query')
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly assetService: AssetService,
+  ) {}
 
   @ApiOkResponse({ type: UserModel })
   @Serialize(UserModel)
@@ -31,6 +36,12 @@ export class UserController {
     await this.userService.assertUserExistsById(id)
 
     return this.userService.findById({ id })
+  }
+
+  @ApiOkArrayResponse(AssetModel)
+  @Get(':id/asset')
+  async getAssets(@Param('id') id: string) {
+    return await mapToArrayResponse(await this.assetService.getAllByCreatorId({ creatorId: id }))
   }
 
   @ApiOkArrayResponse(UserModel)

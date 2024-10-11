@@ -23,7 +23,7 @@ export class AssetModel implements Asset {
   title: string
 
   @ApiProperty()
-  creatorId: bigint
+  creatorId: string
 
   @ApiProperty()
   category: Category
