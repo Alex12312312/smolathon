@@ -2,6 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button.tsx'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useUserGetById } from '@/hooks/user.hooks'
+import { TelegramAvatar } from '@/components/telegramAvatar'
 
 function ProfileUser() {
     const navigate = useNavigate()
@@ -32,7 +33,7 @@ function ProfileUser() {
             <div className="w-full flex-col justify-between overflow-y-scroll pb-5">
                 <div className="relative h-[110px] w-full overflow-hidden">
                     <img
-                        src={'data:image/jpeg;charset=utf-8;base64,' + user?.result?.avatarUrl}
+                        src={'data:image/jpeg;charset=utf-8;base64,' + user?.avatarUrl}
                         className="absolute h-full w-full scale-150 object-cover blur-lg"
                     />
                     <div className="absolute h-full w-full bg-black opacity-30"></div>
@@ -42,7 +43,7 @@ function ProfileUser() {
                     <div className="absolute top-[-75px]">
                         <Avatar className="h-[110px] w-[110px] border-4 border-white">
                             <AvatarImage
-                                src={'data:image/jpeg;charset=utf-8;base64,' + user?.result?.avatarUrl}
+                                src={'data:image/jpeg;charset=utf-8;base64,' + user?.avatarUrl}
                                 alt="User Avatar"
                             />
                             <AvatarFallback className="bg-[#7f7f7f] text-xl text-gray-800">
@@ -50,8 +51,9 @@ function ProfileUser() {
                             </AvatarFallback>
                         </Avatar>
                     </div>
+                    <TelegramAvatar avatar={u} />
                     <div className="mt-[55px] select-none p-2 text-xl font-semibold">
-                        {user?.result?.firstName}
+                        {user?.firstName}
                     </div>
                 </div>
                 <Button className="my-4 bg-[#14AE5C] text-base font-bold text-white hover:scale-[1.01] active:scale-[0.99]">

@@ -2,9 +2,10 @@ import { useTelegram } from '@/lib/telegram/telegramProvider.tsx'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button.tsx'
 import { TonConnectButton } from '@tonconnect/ui-react'
-import Friend from '@/components/friend/friend.tsx'
+import Friend from '@/components/friend'
 import coin from '@/assets/coin.svg'
 import { useGetUserReferrals, useUserGetMe } from '@/hooks/user.hooks'
+import { TelegramAvatar } from '@/components/telegramAvatar'
 
 function ProfileMe() {
     const telegram = useTelegram()
@@ -43,19 +44,14 @@ function ProfileMe() {
                     <div className="absolute h-full w-full bg-black opacity-30"></div>
                 </div>
 
-                <div className="relative mt-8 flex flex-col items-center">
+                <div className="relative mt-8 flex flex-col items-center gap-2">
                     <div className="absolute top-[-75px]">
-                        <Avatar className="h-[110px] w-[110px] border-4 border-white">
-                            <AvatarImage
-                                src={'data:image/jpeg;charset=utf-8;base64,' + user?.avatarUrl}
-                                alt="User Avatar"
-                            />
-                            <AvatarFallback className="bg-[#7f7f7f] text-xl text-gray-800">
-                                😼
-                            </AvatarFallback>
-                        </Avatar>
+                        <TelegramAvatar
+                            avatar={user?.avatarUrl}
+                            className="h-[110px] w-[110px] border-4 border-item"
+                        />
                     </div>
-                    <div className="mt-[55px] select-none p-2 text-xl font-semibold">
+                    <div className="mt-[30px] select-none p-2 text-xl font-semibold">
                         {user?.firstName}
                     </div>
                 </div>

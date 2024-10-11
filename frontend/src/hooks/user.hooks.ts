@@ -10,7 +10,7 @@ export const useUserGetById = (id: string) => {
         fetcher,
     )
 
-    return { user: data ?? undefined, error, isLoading }
+    return { user: data?.result, error, isLoading }
 }
 
 export const useUserGetMe = (token: string) => {
