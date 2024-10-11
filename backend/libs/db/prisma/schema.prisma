@@ -85,8 +85,8 @@ model Asset {
   price Int?
 
 
-  creator Users @relation("user_assets", fields: [creatorId], references: [telegramId])
-  creatorId BigInt @map("creator_id")
+  creator Users @relation("user_assets", fields: [creatorId], references: [id])
+  creatorId String @map("creator_id")
 
 
   consumer   Users?  @relation("user_assets_own", fields: [consumerId], references: [telegramId])

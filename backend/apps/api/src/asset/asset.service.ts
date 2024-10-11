@@ -71,4 +71,12 @@ export class AssetService {
       where: { id },
     })
   }
+
+  async getAllByCreatorId(params: { creatorId: string }): Promise<AssetModel[]> {
+    const { creatorId } = params
+
+    return await this.prisma.asset.findMany({
+      where: { creatorId: creatorId },
+    })
+  }
 }
