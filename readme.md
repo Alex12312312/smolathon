@@ -26,3 +26,8 @@ pnpm run dev
 npm i
 npm run dev
 ```
+
+Текущий фронт и бек развернуты по следующим адресам:
+- API: https://api.smolathon.quassbot.ru/swagger
+- S3: https://storage.smolathon.quassbot.ru/swagger
+- Актуальный бот с MVP: https://t.me/HackTestBotXdBot_bot
