@@ -5,14 +5,15 @@ import category3 from '@/assets/category3.svg'
 import category4 from '@/assets/category4.svg'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Poster } from '../poster'
 
 export const MainPage = () => {
     const navigator = useNavigate();
     const [currentPage, changePage] = useState('Каталог')
     return (
         <div className="flex h-full w-full flex-col justify-between">
-            <div className="w-dvw overflow-hidden px-2 pt-7">
-                <div className="no-scrollbar flex w-full flex-auto gap-[15px] overflow-y-hidden overflow-x-scroll text-2xl">
+            <div className="w-dvw overflow-y-hidden px-2 pt-7">
+                <div className="no-scrollbar flex w-full gap-[15px] overflow-y-hidden overflow-x-scroll text-2xl">
                     <div
                         className={`w-fit select-none ${currentPage === 'Каталог' ? 'font-bold text-black dark:text-white' : 'text-[#707070]'}`}
                         onClick={() => {
@@ -30,7 +31,7 @@ export const MainPage = () => {
                         Задания
                     </div>
                     <div
-                        className={`flex w-fit select-none flex-nowrap ${currentPage === 'Мои работы' ? 'font-bold text-black dark:text-white' : 'text-[#707070]'}`}
+                        className={`flex w-28 select-none text-nowrap mr-10 ${currentPage === 'Мои работы' ? 'font-bold text-black dark:text-white' : 'text-[#707070]'}`}
                         onClick={() => {
                             changePage('Мои работы')
                         }}
@@ -38,7 +39,7 @@ export const MainPage = () => {
                         Мои работы
                     </div>
                     <div
-                        className={`flex w-fit select-none flex-nowrap ${currentPage === 'Мои работы' ? 'font-bold text-black dark:text-white' : 'text-[#707070]'}`}
+                        className={`flex w-fit select-none flex-nowrap ${currentPage === 'Афиша' ? 'font-bold text-black dark:text-white' : 'text-[#707070]'}`}
                         onClick={() => {
                             changePage('Афиша')
                         }}
@@ -129,10 +130,18 @@ export const MainPage = () => {
                                     className="absolute bottom-0 right-0 h-[110px]"
                                 />
                             </CategoryCard>
-                            <button onClick={()=>{navigator("/poster")}}>Переход на афишу</button>
                         </div>
                     </div>
                 ) : ( ''
+                )}
+                {currentPage === 'Афиша' ? (
+                    <div className="m-4 flex-col gap-5">
+                        <div className="flex w-full flex-1 flex-grow flex-wrap items-stretch gap-2 self-stretch">
+                            <Poster></Poster>
+                        </div>
+                    </div>
+                ) : (
+                    ''
                 )}
             </div>
             </div> 
