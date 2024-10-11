@@ -55,11 +55,7 @@ export class CommentService {
     return this.prisma.comment.findMany({
       where: { assetId: assetId },
       include: {
-        asset: {
-          include: {
-            creator: true,
-          },
-        },
+        creator: true,
       },
     })
   }
