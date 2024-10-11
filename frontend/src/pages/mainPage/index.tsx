@@ -73,7 +73,7 @@ export const MainPage = () => {
                     >
                         <img src={category1} className="absolute bottom-0 right-0 h-[110px]" />
                     </CategoryCard>
-                    <button onClick={()=>{navigator("/sendFile")}}></button>
+                    
                     
                 </div>
             </div>:""}
