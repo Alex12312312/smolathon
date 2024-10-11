@@ -1,7 +1,7 @@
 import { ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger'
 import { UserService } from './user.service'
 import { UserModel } from './models/user.model'
-import { ApiOkArrayResponse, Serialize, SerializeArray } from '@app/common'
+import { ApiOkArrayResponse, mapToArrayResponse, Serialize, SerializeArray } from '@app/common'
 import { Controller, Get, Param, UseInterceptors, UseGuards, Req } from '@nestjs/common'
 import { TelegramContextInterceptor } from '../auth/interceptors/telegram-context.interceptor'
 import { TelegramAuthGuard } from '@app/common/auth/telegram/auth-telegram.guard'
@@ -20,8 +20,6 @@ export class UserController {
   @Get('me')
   async getMe(@Req() req: RequestWithTelegramContext) {
     const telegramId = req.context.id
-
-    console.log(req.context)
 
     return this.userService.findByTgId({ tgId: telegramId })
   }
@@ -45,6 +43,6 @@ export class UserController {
   async referrals(@Param('id') id: string) {
     await this.userService.assertUserExistsById(id)
 
-    return this.userService.referrals({ id })
+    return mapToArrayResponse(await this.userService.referrals({ id }))
   }
 }

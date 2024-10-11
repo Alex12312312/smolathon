@@ -30,7 +30,6 @@ export class TelegramAuthGuard implements CanActivate {
       }
 
       const queryMap = this.authService.getQueryMap(decoded)
-      console.log(queryMap)
       const payload = await this.authService.validator.validate(queryMap)
 
       request.context = payload

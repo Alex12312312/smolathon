@@ -60,7 +60,6 @@ export class AssetController {
   @UseInterceptors(TelegramContextInterceptor)
   @Post('/purchase/:id')
   async updateConsumer(@Param('id') id: string, @Req() req: RequestWithTelegramContext) {
-    console.log(id, req.context.id)
     return await this.assetService.updateConsumer({ assetId: id, consumerId: req.context.id })
   }
 }
