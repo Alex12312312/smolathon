@@ -5,7 +5,6 @@ import { PrismaModule } from '@app/db'
 import { TelegramAuthModule } from '@app/common'
 import { AssetModule } from './asset/asset.module'
 import { CommentModule } from './comment/comment.module'
-//import { TelegramBotModule } from './telegram-bot/telegram-bot.module';
 
 @Module({
   imports: [
@@ -15,7 +14,6 @@ import { CommentModule } from './comment/comment.module'
     UserModule,
     AssetModule,
     CommentModule,
-    //TelegramBotModule,
   ],
 })
 export class AppModule {}

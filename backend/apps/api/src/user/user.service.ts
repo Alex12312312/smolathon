@@ -83,6 +83,18 @@ export class UserService {
     })
   }
 
+  referrals(params: { id: string }) {
+    const { id } = params
+
+    return this.prisma.users.findMany({
+      where: {
+        invitedBy: {
+          senderId: id,
+        },
+      },
+    })
+  }
+
   async updateWallet(params: {
     telegramId: number
     wallet: string | null

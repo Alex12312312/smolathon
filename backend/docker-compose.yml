@@ -32,6 +32,15 @@ services:
       - '3333:3333'
     networks:
       - backend
+      
+  telegram-bot:
+    build:
+      context: '.'
+      dockerfile: './apps/telegram-bot/Dockerfile'
+    ports:
+      - '3090:3090'
+    networks:
+      - backend
 
 volumes:
   database-pg:

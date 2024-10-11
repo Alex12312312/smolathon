@@ -8,8 +8,8 @@ import { useGetMe } from '@/hooks/assets.hooks.getme'
 
 function ProfileMe() {
     const telegram = useTelegram()
-    const { user, error, isLoading } = useGetMe(telegram.webApp?.initData ?? '')
-
+    //const { user, error, isLoading } = useGetMe(telegram.webApp?.initData ?? '')
+/*
     if (isLoading) {
        return (
             <div className="flex items-center justify-center h-[90vh]">
@@ -21,25 +21,19 @@ function ProfileMe() {
     if (error) {
         return <div>Error occurred: {error.message}</div>
     }
-
+*/
     return (
         <div className="flex h-[90vh] w-full select-none overflow-x-hidden overflow-y-scroll">
             <div className="w-full flex-col justify-between overflow-y-scroll pb-5">
                 <div className="relative h-[110px] w-full overflow-hidden">
-                    <img
-                        src={'data:image/jpeg;charset=utf-8;base64,' + user?.avatarUrl}
-                        className="absolute h-full w-full scale-150 object-cover blur-lg"
-                    />
+                    
                     <div className="absolute h-full w-full bg-black opacity-30"></div>
                 </div>
 
                 <div className="relative mt-8 flex flex-col items-center">
                     <div className="absolute top-[-75px]">
                         <Avatar className="h-[110px] w-[110px] border-4 border-white">
-                            <AvatarImage
-                                src={'data:image/jpeg;charset=utf-8;base64,' + user?.avatarUrl}
-                                alt="User Avatar"
-                            />
+                            
                             <AvatarFallback className="bg-[#7f7f7f] text-xl text-gray-800">
                                 CN
                             </AvatarFallback>
