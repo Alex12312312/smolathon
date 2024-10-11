@@ -7,4 +7,7 @@ export type Asset = {
     title: string
     creatorId: string
     consumerId: bigint | null
+    price: number
 }
+
+export type Category = 'HeroesAndEvents' | 'Activity' | 'HistoricalSites' | 'DigitalArt'
