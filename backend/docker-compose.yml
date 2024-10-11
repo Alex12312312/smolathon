@@ -33,7 +33,7 @@ services:
     networks:
       - backend
       
-  api:
+  telegram-bot:
     build:
       context: '.'
       dockerfile: './apps/telegram-bot/Dockerfile'
