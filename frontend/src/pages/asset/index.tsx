@@ -23,6 +23,8 @@ export const Asset = () => {
         )
     }
 
+    //const { user } = useUserGetById(asset?.creatorId ?? '')
+
     return (
         <div className="flex h-[93vh] w-full select-none overflow-x-hidden overflow-y-scroll">
             <div className="w-full flex-col justify-between overflow-y-scroll">
