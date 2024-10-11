@@ -1,17 +1,11 @@
 import { FeedItem } from '@/components/feedItem'
 import { Group } from '@/components/group'
 import { useCategoryFeed } from '@/hooks/assets.hooks'
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useRef, useCallback, useEffect } from 'react'
 
 export const Feed = () => {
-    const { data, size, setSize } = useCategoryFeed()
-
-    const [query, setQuery] = useState('')
+    const { data, setSize } = useCategoryFeed()
     const loader = useRef<HTMLDivElement | null>(null)
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setQuery(e.target.value)
-    }
 
     const handleObserver = useCallback(
         (entries: IntersectionObserverEntry[]) => {
