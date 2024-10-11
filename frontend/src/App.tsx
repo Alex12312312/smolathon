@@ -6,6 +6,7 @@ import Layout from './pages/layout'
 import ProfileMe from './pages/profile-me'
 import { TelegramProvider } from './lib/telegram/telegramProvider'
 import { Feed } from './pages/feed'
+import TaskList from './components/task/task-list'
 
 function App() {
     return (

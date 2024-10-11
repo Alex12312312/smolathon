@@ -14,21 +14,6 @@ function TaskList() {
                 <AccordionItem value="item-3" className="py-2">
                 <TaskItem/>
                 </AccordionItem>
-                <AccordionItem value="item-4" className="py-2">
-                <TaskItem/>
-                </AccordionItem>
-                <AccordionItem value="item-5" className="py-2">
-                <TaskItem/>
-                </AccordionItem>
-                <AccordionItem value="item-6" className="py-2">
-                <TaskItem/>
-                </AccordionItem>
-                <AccordionItem value="item-7" className="py-2">
-                <TaskItem/>
-                </AccordionItem>
-                <AccordionItem value="item-8" className="py-2">
-                <TaskItem/>
-                </AccordionItem>
             </Accordion>
         </div>
     )
