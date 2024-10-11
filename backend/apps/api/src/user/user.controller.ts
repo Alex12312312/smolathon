@@ -26,8 +26,6 @@ export class UserController {
 
   @ApiOkResponse({ type: UserModel })
   @Serialize(UserModel)
-  @UseGuards(TelegramAuthGuard)
-  @UseInterceptors(TelegramContextInterceptor)
   @Get(':id')
   async findById(@Param('id') id: string) {
     await this.userService.assertUserExistsById(id)

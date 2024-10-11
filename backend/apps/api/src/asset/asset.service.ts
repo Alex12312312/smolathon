@@ -59,6 +59,7 @@ export class AssetService {
         consumerId: true,
         category: true,
         comments: true,
+        price: true,
       },
     })
   }

@@ -82,6 +82,7 @@ model Asset {
   image       String
   description String
   title       String
+  price Int?
 
 
   creator Users @relation("user_assets", fields: [creatorId], references: [telegramId])

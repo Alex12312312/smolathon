@@ -30,6 +30,9 @@ export class AssetModel implements Asset {
 
   @ApiProperty()
   consumerId: bigint | null
+
+  @ApiProperty()
+  price: number | null
 }
 
 export type AssetCreate = Omit<AssetModel, 'id' | 'createdAt' | 'updatedAt' | 'consumerId'>

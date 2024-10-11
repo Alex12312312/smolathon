@@ -108,4 +108,15 @@ export class UserService {
       },
     })
   }
+
+  async updatebyTgId(params: { tgId: bigint; data: UserUpdate }): Promise<UserModel | null> {
+    const { tgId, data } = params
+
+    return this.prisma.users.update({
+      where: { telegramId: tgId },
+      data: {
+        ...data,
+      },
+    })
+  }
 }

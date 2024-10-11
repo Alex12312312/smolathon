@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Get,
@@ -19,12 +20,16 @@ import { AssetCreateDto } from './dto/asset-create.dto'
 import { TelegramContextInterceptor } from '../auth/interceptors/telegram-context.interceptor'
 import { RequestWithTelegramContext } from '@app/common/controller/controller.model'
 import { Category } from '@prisma/client'
+import { UserService } from '../user/user.service'
 
 @ApiTags('Asset')
 @ApiSecurity('telegram-query')
 @Controller('asset')
 export class AssetController {
-  constructor(private readonly assetService: AssetService) {}
+  constructor(
+    private readonly assetService: AssetService,
+    private readonly userService: UserService,
+  ) {}
 
   @ApiOkArrayResponse(AssetModel)
   @ApiQuery({
@@ -67,6 +72,18 @@ export class AssetController {
   @UseInterceptors(TelegramContextInterceptor)
   @Post('/purchase/:id')
   async updateConsumer(@Param('id') id: string, @Req() req: RequestWithTelegramContext) {
-    return await this.assetService.updateConsumer({ assetId: id, consumerId: req.context.id })
+    const potentialConsumerId = req.context.id
+    const potentialConsumer = await this.userService.findByTgId({ tgId: potentialConsumerId })
+    const asset = await this.assetService.findUnique({ id: id })
+
+    if (potentialConsumer.balance >= asset.price) {
+      await this.userService.updatebyTgId({
+        tgId: potentialConsumer.telegramId,
+        data: { balance: potentialConsumer.balance - asset.price },
+      })
+      return await this.assetService.updateConsumer({ assetId: id, consumerId: req.context.id })
+    }
+    //return { message: 'Insufficient balance' }
+    throw new BadRequestException()
   }
 }

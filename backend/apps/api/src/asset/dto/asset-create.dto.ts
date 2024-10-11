@@ -22,4 +22,8 @@ export class AssetCreateDto {
   @IsEnum(Category)
   @IsOptional()
   category: Category
+
+  @ApiProperty()
+  @IsOptional()
+  price: number
 }
