@@ -37,6 +37,14 @@ export const MainPage = () => {
                     >
                         Мои работы
                     </div>
+                    <div
+                        className={`flex w-fit select-none flex-nowrap ${currentPage === 'Мои работы' ? 'font-bold text-black dark:text-white' : 'text-[#707070]'}`}
+                        onClick={() => {
+                            changePage('Афиша')
+                        }}
+                    >
+                        Афиша
+                    </div>
                 </div>
                 {currentPage === 'Каталог' ? (
                     <div className="mx-1 mt-3 flex-col gap-5">
