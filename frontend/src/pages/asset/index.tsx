@@ -78,7 +78,7 @@ export const Asset = () => {
                                     comment.creator?.firstName,
                                     comment.creator?.lastName,
                                 ].join(' ')}
-                                avatar={comment.asset.creator.avatarUrl}
+                                avatar={comment.creator.avatarUrl}
                             ></Comment>
                         ))}
                         <Comment text="Здорово 🔥" avatar={null} author="Пользователь"></Comment>

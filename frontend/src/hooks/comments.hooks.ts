@@ -13,5 +13,5 @@ export const useGetCommentsByAssetId = (id: string) => {
 
     console.log(data)
 
-    return { comments: data?.result?.data, error, isLoading }
+    return { comments: data?.result, error, isLoading }
 }
