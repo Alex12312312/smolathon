@@ -41,15 +41,7 @@ function ProfileUser() {
 
                 <div className="relative mt-8 flex flex-col items-center">
                     <div className="absolute top-[-75px]">
-                        <Avatar className="h-[110px] w-[110px] border-4 border-white">
-                            <AvatarImage
-                                src={'data:image/jpeg;charset=utf-8;base64,' + user?.avatarUrl}
-                                alt="User Avatar"
-                            />
-                            <AvatarFallback className="bg-[#7f7f7f] text-xl text-gray-800">
-                                CN
-                            </AvatarFallback>
-                        </Avatar>
+                        <TelegramAvatar avatar={user?.avatarUrl} />
                     </div>
                     <TelegramAvatar avatar={u} />
                     <div className="mt-[55px] select-none p-2 text-xl font-semibold">
