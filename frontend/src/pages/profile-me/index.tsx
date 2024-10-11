@@ -1,6 +1,6 @@
 import { useTelegram } from '@/lib/telegram/telegramProvider.tsx'
 //import { useGetMe } from '../../hooks/user.hooks.getme.ts'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback} from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button.tsx'
 import { TonConnectButton } from '@tonconnect/ui-react'
 import Friend from '@/components/friend/friend.tsx'
