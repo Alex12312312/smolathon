@@ -39,13 +39,14 @@ export const Feed = () => {
         <>
             <Group
                 className="flex h-[93vh] select-none overflow-x-hidden overflow-y-scroll overscroll-none p-3"
-                name="Гойда"
+                name="Каталог"
             >
                 <div className="flex flex-grow flex-wrap justify-center gap-3">
                     <div className="flex flex-wrap gap-4">
                         {data?.map((feedItems) => {
                             return feedItems.map((feedItem) => (
                                 <FeedItem
+                                    id={feedItem.id}
                                     key={feedItem.id}
                                     title={feedItem.title}
                                     imageSrc={feedItem.image}
@@ -61,71 +62,4 @@ export const Feed = () => {
             </Group>
         </>
     )
-}
-
-{
-    /* <Group name="Гойда" className="h-full w-full p-4">
-                <div className="flex flex-wrap gap-4">
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                    <FeedItem
-                        imageSrc="https://i.pinimg.com/736x/ef/8e/8f/ef8e8fe7b17f025d644beaaaebd82c3d.jpg"
-                        title="Смоленская башня"
-                        description="Lorem ipsum cheto xz"
-                    ></FeedItem>
-                </div>
-            </Group> */
 }

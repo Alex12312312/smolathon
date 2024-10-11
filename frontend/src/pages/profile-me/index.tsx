@@ -6,6 +6,7 @@ import Friend from '@/components/friend'
 import coin from '@/assets/coin.svg'
 import { useGetUserReferrals, useUserGetMe } from '@/hooks/user.hooks'
 import { TelegramAvatar } from '@/components/telegramAvatar'
+import { telegramForwardUrl } from '@/lib/utils'
 
 function ProfileMe() {
     const telegram = useTelegram()
@@ -73,7 +74,17 @@ function ProfileMe() {
                     <div className="self-center pt-7">
                         <TonConnectButton className="w-[300px] rounded-sm text-black" />
                     </div>
-                    <Button className="my-4 bg-[#14AE5C] text-base font-bold text-white hover:scale-[1.01] active:scale-[0.99]">
+                    <Button
+                        className="my-4 bg-[#14AE5C] text-base font-bold text-white hover:scale-[1.01] active:scale-[0.99]"
+                        onClick={() => {
+                            telegram.webApp?.openTelegramLink(
+                                telegramForwardUrl(
+                                    'Приходи в Цифровой город! Участвуй и зарабатывай! 😼',
+                                    user?.id,
+                                ),
+                            )
+                        }}
+                    >
                         Пригласить друга
                     </Button>
                     <div className="flex flex-col items-start justify-between">
