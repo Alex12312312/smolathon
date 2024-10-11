@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button.tsx'
 import { TonConnectButton } from '@tonconnect/ui-react'
 import Friend from '@/components/friend/friend.tsx'
 import coin from '@/assets/coin.svg'
-import { useGetUserReferrals, useUserGetMe } from '@/hooks/user.hooks'
+import { useUserGetMe } from '@/hooks/user.hooks'
 
 function ProfileMe() {
     const telegram = useTelegram()
@@ -13,12 +13,12 @@ function ProfileMe() {
         error: userError,
         isLoading: userIsLoading,
     } = useUserGetMe(telegram.webApp?.initData ?? '')
-    const {
+    /*const {
         referrals,
         error: referralsError,
         isLoading: referralsIsLoading,
     } = useGetUserReferrals(telegram.webApp?.initData ?? '')
-
+*/
     if (userIsLoading) {
         return (
             <div className="flex h-[90vh] items-center justify-center">
