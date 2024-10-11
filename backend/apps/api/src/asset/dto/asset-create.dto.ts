@@ -24,6 +24,5 @@ export class AssetCreateDto {
   category: Category
 
   @ApiProperty()
-  @IsOptional()
   price: number
 }
