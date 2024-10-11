@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { useGetAssetById } from '@/hooks/assets.hooks'
 import { useUserGetById } from '@/hooks/user.hooks'
 import heart from '../../assets/heart.svg'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export const Asset = () => {
     const { id } = useParams()
@@ -22,12 +22,6 @@ export const Asset = () => {
             </div>
         )
     }
-
-    useEffect(() => {
-        if (asset?.creatorId) {
-            useUserGetById(asset.creatorId)
-        }
-    }, [asset])
 
     return (
         <div className="flex h-[93vh] w-full select-none overflow-x-hidden overflow-y-scroll">
